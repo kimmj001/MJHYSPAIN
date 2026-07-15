@@ -1,14 +1,7 @@
-const CACHE = 'barcelona-2026-v5-fixed-2';
+const CACHE = 'barcelona-2026-v5-root-assets-1';
 const ASSETS = [
-  "./assets/beach.jpg",
-  "./assets/gothic.jpg",
-  "./assets/montjuic.jpg",
-  "./assets/montserrat.jpg",
-  "./assets/parkguell.jpg",
-  "./assets/passeig.jpg",
-  "./assets/rambla.jpg",
-  "./assets/sagrada.jpg",
-  "./assets/stay.png",
+  "./README.txt",
+  "./beach.jpg",
   "./day1.html",
   "./day10.html",
   "./day2.html",
@@ -19,18 +12,24 @@ const ASSETS = [
   "./day7.html",
   "./day8.html",
   "./day9.html",
+  "./gothic.jpg",
   "./guide.js",
   "./icon-192.png",
   "./icon-512.png",
   "./index.html",
   "./manifest.webmanifest",
+  "./montjuic.jpg",
+  "./montserrat.jpg",
+  "./parkguell.jpg",
+  "./passeig.jpg",
+  "./rambla.jpg",
+  "./sagrada.jpg",
+  "./stay.png",
   "./style.css"
 ];
 
 self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(CACHE).then(cache => cache.addAll(ASSETS))
-  );
+  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)));
   self.skipWaiting();
 });
 
@@ -45,11 +44,8 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
-
   const url = new URL(event.request.url);
-  const isLocal = url.origin === self.location.origin;
-
-  if (isLocal) {
+  if (url.origin === self.location.origin) {
     event.respondWith(
       fetch(event.request)
         .then(response => {
