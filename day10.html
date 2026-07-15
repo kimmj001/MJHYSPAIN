@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
-<title>마지막 브런치 &amp; 출국 — Barcelona 2026</title><link href="style.css" rel="stylesheet"/>
-<link rel="manifest" href="manifest.webmanifest">
+<title>마지막 브런치 &amp; 출국 — Barcelona 2026</title><link href="style.css" rel="stylesheet"/><link rel="manifest" href="./manifest.webmanifest">
 <meta name="theme-color" content="#D94B3D">
-<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="./icon-192.png">
 </head><body>
 <nav class="nav"><div class="nav-inner"><a class="brand" href="index.html">BARCELONA <span>2026</span></a><div class="nav-links"><a href="index.html#overview">개요</a><a href="index.html#stay">숙소</a><a href="index.html#plan">일정</a><a href="index.html#flight">항공</a></div></div></nav>
 <header class="detail-hero"><img alt="마지막 브런치 &amp; 출국" src="assets/rambla.jpg"/><div class="detail-title"><div class="eyebrow" style="color:#ffd7d1">08.29 SAT · Departure</div><h1>Departure</h1><p>숙소 주변에서만 움직이고 15시 30분 전후 공항 도착을 목표로 하는 출국일.</p></div></header>
@@ -182,10 +181,11 @@
 </div><iframe allowfullscreen="" class="map-frame" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Barcelona+El+Prat+Airport&amp;output=embed" title="Departure 지도"></iframe>
 </article></div>
 <div class="page-nav"><a href="day9.html">← 이전</a><a href="index.html">다음 →</a></div>
-</main><footer class="footer">명명이 × 하여니공주 · Barcelona 2026</footer><script src="guide.js"></script>
-<script>
+</main><footer class="footer">명명이 × 하여니공주 · Barcelona 2026</footer><script src="guide.js"></script><script>
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js'));
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./service-worker.js', {updateViaCache: 'none'});
+  });
 }
 </script>
 </body></html>

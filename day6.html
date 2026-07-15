@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
-<title>쇼핑 &amp; 에이샴플 — Barcelona 2026</title><link href="style.css" rel="stylesheet"/>
-<link rel="manifest" href="manifest.webmanifest">
+<title>쇼핑 &amp; 에이샴플 — Barcelona 2026</title><link href="style.css" rel="stylesheet"/><link rel="manifest" href="./manifest.webmanifest">
 <meta name="theme-color" content="#D94B3D">
-<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="./icon-192.png">
 </head><body>
 <nav class="nav"><div class="nav-inner"><a class="brand" href="index.html">BARCELONA <span>2026</span></a><div class="nav-links"><a href="index.html#overview">개요</a><a href="index.html#stay">숙소</a><a href="index.html#plan">일정</a><a href="index.html#flight">항공</a></div></div></nav>
 <header class="detail-hero"><img alt="쇼핑 &amp; 에이샴플" src="assets/passeig.jpg"/><div class="detail-title"><div class="eyebrow" style="color:#ffd7d1">08.25 TUE · Relaxed</div><h1>Passeig de Gràcia</h1><p>숙소에서 북동쪽으로 걸어 올라가며 쇼핑하고 카탈루냐 광장에서 Metro로 복귀.</p></div></header>
@@ -254,10 +253,11 @@
 </div><iframe allowfullscreen="" class="map-frame" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Urgell+Metro+Barcelona&amp;output=embed" title="숙소 복귀 지도"></iframe>
 </article></div>
 <div class="page-nav"><a href="day5.html">← 이전</a><a href="day7.html">다음 →</a></div>
-</main><footer class="footer">명명이 × 하여니공주 · Barcelona 2026</footer><script src="guide.js"></script>
-<script>
+</main><footer class="footer">명명이 × 하여니공주 · Barcelona 2026</footer><script src="guide.js"></script><script>
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js'));
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./service-worker.js', {updateViaCache: 'none'});
+  });
 }
 </script>
 </body></html>

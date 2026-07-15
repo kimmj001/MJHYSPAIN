@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Barcelona 2026 — 명명이 × 하여니공주</title><link href="style.css" rel="stylesheet"/>
-<link rel="manifest" href="manifest.webmanifest">
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Barcelona 2026 — 명명이 × 하여니공주</title><link href="style.css" rel="stylesheet"/><link rel="manifest" href="./manifest.webmanifest">
 <meta name="theme-color" content="#D94B3D">
-<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="./icon-192.png">
 </head><body>
 <nav class="nav"><div class="nav-inner"><a class="brand" href="index.html">BARCELONA <span>2026</span></a><div class="nav-links"><a href="index.html#overview">개요</a><a href="index.html#stay">숙소</a><a href="index.html#plan">일정</a><a href="index.html#flight">항공</a></div></div></nav>
 <header class="hero"><div><div class="eyebrow">Ming × Hayeoni Princess</div><h1>Barcelona<br/>Summer</h1><p class="hero-sub">2026년 8월, 명명이와 하여니공주가 바르셀로나에서 보내는 9박 10일. 모든 대표 이미지는 사이트 안에 저장하여 외부 이미지 서버가 끊겨도 표시됩니다.</p><div class="chips"><span class="chip">2026.08.20 — 08.29</span><span class="chip">9박 10일</span><span class="chip">Barcelona + Montserrat</span><span class="chip">Urgell Area</span></div><a class="btn" href="#plan">일정 보기</a></div>
@@ -42,10 +41,11 @@
 <div class="route-item"><strong>CA845 · 2026.08.20 02:50</strong><span>베이징 → 바르셀로나 · 08:15 도착</span></div>
 <div class="route-item"><strong>CA572 · 2026.08.29 18:55</strong><span>바르셀로나 → 베이징 · 2026.08.30 12:10 도착</span></div>
 <div class="route-item"><strong>CA709 · 2026.08.30 18:50</strong><span>베이징 → 서울 · 22:00 도착</span></div></div></section>
-<footer class="footer"><strong>Barcelona 2026</strong><br/>명명이 × 하여니공주 · Interactive Travel Brochure</footer>
-<script>
+<footer class="footer"><strong>Barcelona 2026</strong><br/>명명이 × 하여니공주 · Interactive Travel Brochure</footer><script>
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js'));
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./service-worker.js', {updateViaCache: 'none'});
+  });
 }
 </script>
 </body></html>
