@@ -1,9 +1,1 @@
-
-document.addEventListener('click', function(e){
-  const btn = e.target.closest('.guide-btn');
-  if(!btn) return;
-  const panel = document.getElementById(btn.getAttribute('aria-controls'));
-  const isOpen = panel.classList.toggle('open');
-  btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-  btn.textContent = isOpen ? '관람 가이드 닫기' : '관람 가이드';
-});
+document.addEventListener('click',e=>{const b=e.target.closest('.guide-btn');if(!b)return;const p=document.getElementById(b.getAttribute('aria-controls'));const o=p.classList.toggle('open');b.textContent=o?'관람 가이드 닫기':'관람 가이드';});
