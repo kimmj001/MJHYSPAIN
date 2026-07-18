@@ -1,23 +1,42 @@
-const CACHE='barcelona-2026-v7-root-1';
-const ASSETS=["./beach.jpg", "./day1.html", "./day10.html", "./day2.html", "./day3.html", "./day4.html", "./day5.html", "./day6.html", "./day7.html", "./day8.html", "./day9.html", "./gothic.jpg", "./guide.js", "./icon-192.png", "./icon-512.png", "./index.html", "./manifest.webmanifest", "./montjuic.jpg", "./montserrat.jpg", "./parkguell.jpg", "./passeig.jpg", "./rambla.jpg", "./sagrada.jpg", "./stay.png", "./style.css", "./v7_d01_s01_p1.jpg", "./v7_d01_s01_p2.jpg", "./v7_d01_s01_p3.jpg", "./v7_d01_s01_p4.jpg", "./v7_d01_s02_p1.jpg", "./v7_d01_s02_p2.jpg", "./v7_d01_s02_p3.jpg", "./v7_d01_s02_p4.jpg", "./v7_d01_s03_p1.jpg", "./v7_d01_s03_p2.jpg", "./v7_d01_s03_p3.jpg", "./v7_d01_s03_p4.jpg", "./v7_d01_s04_p1.jpg", "./v7_d01_s04_p2.jpg", "./v7_d01_s04_p3.jpg", "./v7_d01_s04_p4.jpg", "./v7_d01_s05_p1.jpg", "./v7_d01_s05_p2.jpg", "./v7_d01_s05_p3.jpg", "./v7_d01_s05_p4.jpg", "./v7_d01_s06_p1.jpg", "./v7_d01_s06_p2.jpg", "./v7_d01_s06_p3.jpg", "./v7_d01_s06_p4.jpg", "./v7_d02_s01_p1.jpg", "./v7_d02_s01_p2.jpg", "./v7_d02_s01_p3.jpg", "./v7_d02_s01_p4.jpg", "./v7_d02_s02_p1.jpg", "./v7_d02_s02_p2.jpg", "./v7_d02_s02_p3.jpg", "./v7_d02_s02_p4.jpg", "./v7_d02_s03_p1.jpg", "./v7_d02_s03_p2.jpg", "./v7_d02_s03_p3.jpg", "./v7_d02_s03_p4.jpg", "./v7_d02_s04_p1.jpg", "./v7_d02_s04_p2.jpg", "./v7_d02_s04_p3.jpg", "./v7_d02_s04_p4.jpg", "./v7_d02_s05_p1.jpg", "./v7_d02_s05_p2.jpg", "./v7_d02_s05_p3.jpg", "./v7_d02_s05_p4.jpg", "./v7_d02_s06_p1.jpg", "./v7_d02_s06_p2.jpg", "./v7_d02_s06_p3.jpg", "./v7_d02_s06_p4.jpg", "./v7_d02_s07_p1.jpg", "./v7_d02_s07_p2.jpg", "./v7_d02_s07_p3.jpg", "./v7_d02_s07_p4.jpg", "./v7_d02_s08_p1.jpg", "./v7_d02_s08_p2.jpg", "./v7_d02_s08_p3.jpg", "./v7_d02_s08_p4.jpg", "./v7_d02_s09_p1.jpg", "./v7_d02_s09_p2.jpg", "./v7_d02_s09_p3.jpg", "./v7_d02_s09_p4.jpg", "./v7_d03_s01_p1.jpg", "./v7_d03_s01_p2.jpg", "./v7_d03_s01_p3.jpg", "./v7_d03_s01_p4.jpg", "./v7_d03_s02_p1.jpg", "./v7_d03_s02_p2.jpg", "./v7_d03_s02_p3.jpg", "./v7_d03_s02_p4.jpg", "./v7_d03_s03_p1.jpg", "./v7_d03_s03_p2.jpg", "./v7_d03_s03_p3.jpg", "./v7_d03_s03_p4.jpg", "./v7_d03_s04_p1.jpg", "./v7_d03_s04_p2.jpg", "./v7_d03_s04_p3.jpg", "./v7_d03_s04_p4.jpg", "./v7_d03_s05_p1.jpg", "./v7_d03_s05_p2.jpg", "./v7_d03_s05_p3.jpg", "./v7_d03_s05_p4.jpg", "./v7_d03_s06_p1.jpg", "./v7_d03_s06_p2.jpg", "./v7_d03_s06_p3.jpg", "./v7_d03_s06_p4.jpg", "./v7_d03_s07_p1.jpg", "./v7_d03_s07_p2.jpg", "./v7_d03_s07_p3.jpg", "./v7_d03_s07_p4.jpg", "./v7_d03_s08_p1.jpg", "./v7_d03_s08_p2.jpg", "./v7_d03_s08_p3.jpg", "./v7_d03_s08_p4.jpg", "./v7_d04_s01_p1.jpg", "./v7_d04_s01_p2.jpg", "./v7_d04_s01_p3.jpg", "./v7_d04_s01_p4.jpg", "./v7_d04_s02_p1.jpg", "./v7_d04_s02_p2.jpg", "./v7_d04_s02_p3.jpg", "./v7_d04_s02_p4.jpg", "./v7_d04_s03_p1.jpg", "./v7_d04_s03_p2.jpg", "./v7_d04_s03_p3.jpg", "./v7_d04_s03_p4.jpg", "./v7_d04_s04_p1.jpg", "./v7_d04_s04_p2.jpg", "./v7_d04_s04_p3.jpg", "./v7_d04_s04_p4.jpg", "./v7_d04_s05_p1.jpg", "./v7_d04_s05_p2.jpg", "./v7_d04_s05_p3.jpg", "./v7_d04_s05_p4.jpg", "./v7_d04_s06_p1.jpg", "./v7_d04_s06_p2.jpg", "./v7_d04_s06_p3.jpg", "./v7_d04_s06_p4.jpg", "./v7_d04_s07_p1.jpg", "./v7_d04_s07_p2.jpg", "./v7_d04_s07_p3.jpg", "./v7_d04_s07_p4.jpg", "./v7_d04_s08_p1.jpg", "./v7_d04_s08_p2.jpg", "./v7_d04_s08_p3.jpg", "./v7_d04_s08_p4.jpg", "./v7_d04_s09_p1.jpg", "./v7_d04_s09_p2.jpg", "./v7_d04_s09_p3.jpg", "./v7_d04_s09_p4.jpg", "./v7_d04_s10_p1.jpg", "./v7_d04_s10_p2.jpg", "./v7_d04_s10_p3.jpg", "./v7_d04_s10_p4.jpg", "./v7_d04_s11_p1.jpg", "./v7_d04_s11_p2.jpg", "./v7_d04_s11_p3.jpg", "./v7_d04_s11_p4.jpg", "./v7_d05_s01_p1.jpg", "./v7_d05_s01_p2.jpg", "./v7_d05_s01_p3.jpg", "./v7_d05_s01_p4.jpg", "./v7_d05_s02_p1.jpg", "./v7_d05_s02_p2.jpg", "./v7_d05_s02_p3.jpg", "./v7_d05_s02_p4.jpg", "./v7_d05_s03_p1.jpg", "./v7_d05_s03_p2.jpg", "./v7_d05_s03_p3.jpg", "./v7_d05_s03_p4.jpg", "./v7_d05_s04_p1.jpg", "./v7_d05_s04_p2.jpg", "./v7_d05_s04_p3.jpg", "./v7_d05_s04_p4.jpg", "./v7_d05_s05_p1.jpg", "./v7_d05_s05_p2.jpg", "./v7_d05_s05_p3.jpg", "./v7_d05_s05_p4.jpg", "./v7_d05_s06_p1.jpg", "./v7_d05_s06_p2.jpg", "./v7_d05_s06_p3.jpg", "./v7_d05_s06_p4.jpg", "./v7_d05_s07_p1.jpg", "./v7_d05_s07_p2.jpg", "./v7_d05_s07_p3.jpg", "./v7_d05_s07_p4.jpg", "./v7_d05_s08_p1.jpg", "./v7_d05_s08_p2.jpg", "./v7_d05_s08_p3.jpg", "./v7_d05_s08_p4.jpg", "./v7_d05_s09_p1.jpg", "./v7_d05_s09_p2.jpg", "./v7_d05_s09_p3.jpg", "./v7_d05_s09_p4.jpg", "./v7_d06_s01_p1.jpg", "./v7_d06_s01_p2.jpg", "./v7_d06_s01_p3.jpg", "./v7_d06_s01_p4.jpg", "./v7_d06_s02_p1.jpg", "./v7_d06_s02_p2.jpg", "./v7_d06_s02_p3.jpg", "./v7_d06_s02_p4.jpg", "./v7_d06_s03_p1.jpg", "./v7_d06_s03_p2.jpg", "./v7_d06_s03_p3.jpg", "./v7_d06_s03_p4.jpg", "./v7_d06_s04_p1.jpg", "./v7_d06_s04_p2.jpg", "./v7_d06_s04_p3.jpg", "./v7_d06_s04_p4.jpg", "./v7_d06_s05_p1.jpg", "./v7_d06_s05_p2.jpg", "./v7_d06_s05_p3.jpg", "./v7_d06_s05_p4.jpg", "./v7_d06_s06_p1.jpg", "./v7_d06_s06_p2.jpg", "./v7_d06_s06_p3.jpg", "./v7_d06_s06_p4.jpg", "./v7_d06_s07_p1.jpg", "./v7_d06_s07_p2.jpg", "./v7_d06_s07_p3.jpg", "./v7_d06_s07_p4.jpg", "./v7_d06_s08_p1.jpg", "./v7_d06_s08_p2.jpg", "./v7_d06_s08_p3.jpg", "./v7_d06_s08_p4.jpg", "./v7_d06_s09_p1.jpg", "./v7_d06_s09_p2.jpg", "./v7_d06_s09_p3.jpg", "./v7_d06_s09_p4.jpg", "./v7_d06_s10_p1.jpg", "./v7_d06_s10_p2.jpg", "./v7_d06_s10_p3.jpg", "./v7_d06_s10_p4.jpg", "./v7_d06_s11_p1.jpg", "./v7_d06_s11_p2.jpg", "./v7_d06_s11_p3.jpg", "./v7_d06_s11_p4.jpg", "./v7_d07_s01_p1.jpg", "./v7_d07_s01_p2.jpg", "./v7_d07_s01_p3.jpg", "./v7_d07_s01_p4.jpg", "./v7_d07_s02_p1.jpg", "./v7_d07_s02_p2.jpg", "./v7_d07_s02_p3.jpg", "./v7_d07_s02_p4.jpg", "./v7_d07_s03_p1.jpg", "./v7_d07_s03_p2.jpg", "./v7_d07_s03_p3.jpg", "./v7_d07_s03_p4.jpg", "./v7_d07_s04_p1.jpg", "./v7_d07_s04_p2.jpg", "./v7_d07_s04_p3.jpg", "./v7_d07_s04_p4.jpg", "./v7_d07_s05_p1.jpg", "./v7_d07_s05_p2.jpg", "./v7_d07_s05_p3.jpg", "./v7_d07_s05_p4.jpg", "./v7_d07_s06_p1.jpg", "./v7_d07_s06_p2.jpg", "./v7_d07_s06_p3.jpg", "./v7_d07_s06_p4.jpg", "./v7_d07_s07_p1.jpg", "./v7_d07_s07_p2.jpg", "./v7_d07_s07_p3.jpg", "./v7_d07_s07_p4.jpg", "./v7_d07_s08_p1.jpg", "./v7_d07_s08_p2.jpg", "./v7_d07_s08_p3.jpg", "./v7_d07_s08_p4.jpg", "./v7_d07_s09_p1.jpg", "./v7_d07_s09_p2.jpg", "./v7_d07_s09_p3.jpg", "./v7_d07_s09_p4.jpg", "./v7_d07_s10_p1.jpg", "./v7_d07_s10_p2.jpg", "./v7_d07_s10_p3.jpg", "./v7_d07_s10_p4.jpg", "./v7_d08_s01_p1.jpg", "./v7_d08_s01_p2.jpg", "./v7_d08_s01_p3.jpg", "./v7_d08_s01_p4.jpg", "./v7_d08_s02_p1.jpg", "./v7_d08_s02_p2.jpg", "./v7_d08_s02_p3.jpg", "./v7_d08_s02_p4.jpg", "./v7_d08_s03_p1.jpg", "./v7_d08_s03_p2.jpg", "./v7_d08_s03_p3.jpg", "./v7_d08_s03_p4.jpg", "./v7_d08_s04_p1.jpg", "./v7_d08_s04_p2.jpg", "./v7_d08_s04_p3.jpg", "./v7_d08_s04_p4.jpg", "./v7_d08_s05_p1.jpg", "./v7_d08_s05_p2.jpg", "./v7_d08_s05_p3.jpg", "./v7_d08_s05_p4.jpg", "./v7_d08_s06_p1.jpg", "./v7_d08_s06_p2.jpg", "./v7_d08_s06_p3.jpg", "./v7_d08_s06_p4.jpg", "./v7_d08_s07_p1.jpg", "./v7_d08_s07_p2.jpg", "./v7_d08_s07_p3.jpg", "./v7_d08_s07_p4.jpg", "./v7_d08_s08_p1.jpg", "./v7_d08_s08_p2.jpg", "./v7_d08_s08_p3.jpg", "./v7_d08_s08_p4.jpg", "./v7_d08_s09_p1.jpg", "./v7_d08_s09_p2.jpg", "./v7_d08_s09_p3.jpg", "./v7_d08_s09_p4.jpg", "./v7_d08_s10_p1.jpg", "./v7_d08_s10_p2.jpg", "./v7_d08_s10_p3.jpg", "./v7_d08_s10_p4.jpg", "./v7_d08_s11_p1.jpg", "./v7_d08_s11_p2.jpg", "./v7_d08_s11_p3.jpg", "./v7_d08_s11_p4.jpg", "./v7_d08_s12_p1.jpg", "./v7_d08_s12_p2.jpg", "./v7_d08_s12_p3.jpg", "./v7_d08_s12_p4.jpg", "./v7_d09_s01_p1.jpg", "./v7_d09_s01_p2.jpg", "./v7_d09_s01_p3.jpg", "./v7_d09_s01_p4.jpg", "./v7_d09_s02_p1.jpg", "./v7_d09_s02_p2.jpg", "./v7_d09_s02_p3.jpg", "./v7_d09_s02_p4.jpg", "./v7_d09_s03_p1.jpg", "./v7_d09_s03_p2.jpg", "./v7_d09_s03_p3.jpg", "./v7_d09_s03_p4.jpg", "./v7_d09_s04_p1.jpg", "./v7_d09_s04_p2.jpg", "./v7_d09_s04_p3.jpg", "./v7_d09_s04_p4.jpg", "./v7_d09_s05_p1.jpg", "./v7_d09_s05_p2.jpg", "./v7_d09_s05_p3.jpg", "./v7_d09_s05_p4.jpg", "./v7_d09_s06_p1.jpg", "./v7_d09_s06_p2.jpg", "./v7_d09_s06_p3.jpg", "./v7_d09_s06_p4.jpg", "./v7_d09_s07_p1.jpg", "./v7_d09_s07_p2.jpg", "./v7_d09_s07_p3.jpg", "./v7_d09_s07_p4.jpg", "./v7_d09_s08_p1.jpg", "./v7_d09_s08_p2.jpg", "./v7_d09_s08_p3.jpg", "./v7_d09_s08_p4.jpg", "./v7_d10_s01_p1.jpg", "./v7_d10_s01_p2.jpg", "./v7_d10_s01_p3.jpg", "./v7_d10_s01_p4.jpg", "./v7_d10_s02_p1.jpg", "./v7_d10_s02_p2.jpg", "./v7_d10_s02_p3.jpg", "./v7_d10_s02_p4.jpg", "./v7_d10_s03_p1.jpg", "./v7_d10_s03_p2.jpg", "./v7_d10_s03_p3.jpg", "./v7_d10_s03_p4.jpg", "./v7_d10_s04_p1.jpg", "./v7_d10_s04_p2.jpg", "./v7_d10_s04_p3.jpg", "./v7_d10_s04_p4.jpg", "./v7_d10_s05_p1.jpg", "./v7_d10_s05_p2.jpg", "./v7_d10_s05_p3.jpg", "./v7_d10_s05_p4.jpg", "./v7_d10_s06_p1.jpg", "./v7_d10_s06_p2.jpg", "./v7_d10_s06_p3.jpg", "./v7_d10_s06_p4.jpg", "./v7_d10_s07_p1.jpg", "./v7_d10_s07_p2.jpg", "./v7_d10_s07_p3.jpg", "./v7_d10_s07_p4.jpg"];
-self.addEventListener('install',event=>{
-  event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)));
+const CACHE = "barcelona-2026-v9-6";
+const LOCAL_ASSETS = [
+  "./",
+  "./index.html",
+  "./manifest.webmanifest",
+  "./assets/css/app.css?v=9.5",
+  "./assets/data/trip.js?v=9.5",
+  "./assets/data/photos.js?v=9.5",
+  "./assets/js/app.js?v=9.5",
+  "./icon-192.png",
+  "./icon-512.png"
+];
+
+self.addEventListener("install", event => {
+  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(LOCAL_ASSETS)));
   self.skipWaiting();
 });
-self.addEventListener('activate',event=>{
-  event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))));
+
+self.addEventListener("activate", event => {
+  event.waitUntil(
+    caches.keys().then(keys => Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key))))
+  );
   self.clients.claim();
 });
-self.addEventListener('fetch',event=>{
-  if(event.request.method!=='GET')return;
-  const url=new URL(event.request.url);
-  if(url.origin===self.location.origin){
-    event.respondWith(
-      fetch(event.request).then(response=>{
-        const copy=response.clone();
-        caches.open(CACHE).then(cache=>cache.put(event.request,copy));
-        return response;
-      }).catch(()=>caches.match(event.request))
-    );
+
+self.addEventListener("fetch", event => {
+  if (event.request.method !== "GET") return;
+  const url = new URL(event.request.url);
+
+  if (url.origin !== location.origin) {
+    event.respondWith(fetch(event.request).catch(() => caches.match(event.request)));
+    return;
   }
+
+  event.respondWith(
+    fetch(event.request).then(response => {
+        const copy = response.clone();
+        caches.open(CACHE).then(cache => cache.put(event.request, copy)).catch(() => {});
+        return response;
+      }).catch(() => caches.match(event.request))
+  );
 });

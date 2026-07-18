@@ -1,6 +1,7 @@
 {
-  "name": "Barcelona 2026 — 명명이 × 하여니공주",
+  "name": "Barcelona 2026 · 명이미와 하여니공주",
   "short_name": "Barcelona 2026",
+  "description": "2026년 바르셀로나 여행을 위한 실제 사용형 PWA 일정 앱",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
@@ -9,13 +10,13 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "icon-192.png",
+      "src": "./icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icon-512.png",
+      "src": "./icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
