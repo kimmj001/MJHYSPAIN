@@ -1,7 +1,6 @@
 const state = {
   dayId: Number(new URLSearchParams(location.search).get("day")) || 1,
   favorites: readStore("barcelona:favorites", []),
-  checked: readStore("barcelona:checked", []),
   filterFavorites: false
 };
 
@@ -18,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function renderShell() {
-  document.title = `Barcelona 2026 ${data.version} · ${data.travelers}`;
+  document.title = `Barcelona 2026 · ${data.travelers}`;
   $("#app").innerHTML = `
     <div class="app-shell">
       <nav class="topbar">
@@ -35,15 +34,15 @@ function renderShell() {
       <header class="hero">
         <div>
           <div class="eyebrow">${data.travelers}</div>
-          <h1>Barcelona<br>Summer</h1>
-          <p>2026년 바르셀로나 여행 중 실제로 켜두고 쓰는 일정 앱입니다. 시간표는 확정 일정 기준, 이동은 Google Maps 연동, 가이드는 필요한 순간 팝업으로 열리게 정리했습니다.</p>
+          <h1>Barcelona<br>2026</h1>
+          <p>오늘 갈 곳, 다음 이동, 예약 링크만 빠르게 확인합니다.</p>
         </div>
         <div class="hero-card">
           <img src="${data.heroImage}" alt="Barcelona skyline" loading="eager">
           <div class="poster">
-            <div>${data.dates}<span style="float:right">${data.version}</span></div>
-            <strong>No regrets<br>trip plan</strong>
-            <div>${data.homeBase} · PWA</div>
+            <div>${data.dates}</div>
+            <strong>명명이와<br>하여니공주</strong>
+            <div>${data.homeBase}</div>
           </div>
         </div>
       </header>
@@ -51,14 +50,14 @@ function renderShell() {
       <section class="quick-grid">
         <div class="stat"><small>여행 기간</small><strong>9박 10일</strong></div>
         <div class="stat"><small>하이라이트</small><strong>Sitges Fireworks</strong></div>
-        <div class="stat"><small>이동 방식</small><strong>Google Maps 기반</strong></div>
-        <div class="stat"><small>사진</small><strong>로컬 실제 사진</strong></div>
+        <div class="stat"><small>숙소 기준</small><strong>Urgell</strong></div>
+        <div class="stat"><small>핵심 버튼</small><strong>구간 경로</strong></div>
       </section>
 
       <main class="section" id="plan">
         <div class="section-head">
-          <h2>Itinerary</h2>
-          <p>날짜를 누르면 해당 하루가 전환됩니다. 각 이동 구간은 출발지와 도착지를 Google Maps에 넘겨 실시간 길찾기를 사용합니다.</p>
+          <h2>일정</h2>
+          <p>날짜를 누르면 해당 하루가 열립니다. 이동할 때는 일정 사이의 구간 경로 버튼만 누르면 됩니다.</p>
         </div>
         <div class="day-tabs" id="dayTabs"></div>
         <div class="day-layout">
@@ -69,7 +68,7 @@ function renderShell() {
 
       <section class="section" id="sources" hidden>
         <div class="section-head">
-          <h2>Sources</h2>
+          <h2>공식 링크</h2>
           <p>예약, 운영, 교통, 축제 정보 확인용 공식 링크입니다.</p>
         </div>
         <div class="source-panel">
@@ -83,19 +82,13 @@ function renderShell() {
 
       <section class="section">
         <div class="section-head">
-          <h2>Flight</h2>
+          <h2>항공편</h2>
           <p>항공권 시간은 제공된 정보를 기준으로 보존했습니다. 출발 전 항공사 앱에서 재확인하세요.</p>
         </div>
         <div class="panel-grid">
           ${data.flight.map(item => `<div class="panel"><p>${item}</p></div>`).join("")}
         </div>
       </section>
-
-      <div class="tool-dock">
-        <a class="pill-btn" href="https://www.google.com/maps/search/?api=1&query=Barcelona" target="_blank" rel="noreferrer">지도</a>
-        <a class="pill-btn" href="https://weather.com/weather/tenday/l/Barcelona+Catalonia+Spain" target="_blank" rel="noreferrer">날씨</a>
-        <a class="pill-btn" href="https://www.timeanddate.com/sun/spain/barcelona" target="_blank" rel="noreferrer">일몰</a>
-      </div>
 
       <div class="modal-backdrop" id="guideModal" hidden>
         <div class="guide-modal" role="dialog" aria-modal="true" aria-labelledby="guideTitle">
@@ -108,8 +101,8 @@ function renderShell() {
       </div>
 
       <footer class="footer">
-        <strong>Barcelona 2026 ${data.version}</strong><br>
-        ${data.travelers} · 마지막 업데이트 ${data.updatedAt}
+        <strong>Barcelona 2026</strong><br>
+        ${data.travelers}
       </footer>
     </div>
   `;
@@ -141,7 +134,7 @@ function renderDay(dayId) {
         <div class="metric"><small>스톱</small><b>${day.stops.length}개</b></div>
         <div class="metric"><small>첫 일정</small><b>${day.stops[0].time}</b></div>
         <div class="metric"><small>마지막</small><b>${day.stops.at(-1).time}</b></div>
-        <div class="metric"><small>지도</small><b>실시간</b></div>
+        <div class="metric"><small>경로</small><b>실시간</b></div>
       </div>
     </div>
     <div class="warning">${day.warning}</div>
@@ -185,7 +178,6 @@ function renderStop(day, item, usedPhotos) {
     return true;
   });
   const favorite = state.favorites.includes(id);
-  const checked = state.checked.includes(id);
   return `
     <article class="stop" id="${id}" data-time="${item.time}">
       <div class="stop-head">
@@ -193,10 +185,6 @@ function renderStop(day, item, usedPhotos) {
         <div>
           <h3>${item.title}</h3>
           <p>${item.place}</p>
-          <div class="badge-row">
-            <span class="badge blue">${modeLabel(item.travelMode)}</span>
-            ${item.official ? `<span class="badge">공식 확인</span>` : ""}
-          </div>
         </div>
         <button class="icon-btn" data-action="favorite" data-id="${id}" aria-label="즐겨찾기" aria-pressed="${favorite}">${favorite ? "★" : "☆"}</button>
       </div>
@@ -215,22 +203,6 @@ function renderStop(day, item, usedPhotos) {
         ${item.official ? `<a class="pill-btn" href="${item.official}" target="_blank" rel="noreferrer">공식 링크</a>` : ""}
       </div>
 
-      <div class="map-module">
-        <div>
-          <strong>Google Maps 연동</strong>
-          <p>지도는 장소 확인용으로 앱 안에 띄우고, 실제 이동은 Google Maps 길찾기를 사용합니다.</p>
-        </div>
-        <div class="map-actions">
-          <a class="pill-btn primary" href="${liveDirectionsUrl(item.place, item.travelMode)}" target="_blank" rel="noreferrer">현재 위치에서 길찾기</a>
-          <a class="pill-btn" href="${searchUrl(item.place)}" target="_blank" rel="noreferrer">장소 크게 보기</a>
-        </div>
-        <iframe class="map-frame" loading="lazy" src="${embedUrl(item.place)}" title="${item.title} 지도"></iframe>
-      </div>
-
-      <label class="checkline">
-        <input type="checkbox" data-action="check" data-id="${id}" ${checked ? "checked" : ""}>
-        완료 / 방문함
-      </label>
     </article>
   `;
 }
@@ -281,11 +253,6 @@ function bindActions() {
     }
   });
 
-  document.addEventListener("change", event => {
-    if (event.target.dataset.action !== "check") return;
-    toggleInStore("barcelona:checked", state.checked, event.target.dataset.id, event.target.checked);
-  });
-
   document.addEventListener("keydown", event => {
     if (event.key === "Escape") closeGuide();
   });
@@ -298,11 +265,9 @@ function openGuide(dayId, id) {
   $("#guideTime").textContent = `${day.date} ${day.weekday} · ${stop.time}`;
   $("#guideTitle").textContent = stop.title;
   $("#guideBody").textContent = stop.guide;
-  $("#guideActions").innerHTML = `
-    <a class="pill-btn primary" href="${liveDirectionsUrl(stop.place, stop.travelMode)}" target="_blank" rel="noreferrer">현재 위치에서 길찾기</a>
-    <a class="pill-btn" href="${searchUrl(stop.place)}" target="_blank" rel="noreferrer">Google Maps</a>
-    ${stop.official ? `<a class="pill-btn" href="${stop.official}" target="_blank" rel="noreferrer">공식 링크</a>` : ""}
-  `;
+  $("#guideActions").innerHTML = stop.official
+    ? `<a class="pill-btn" href="${stop.official}" target="_blank" rel="noreferrer">공식 링크</a>`
+    : "";
   $("#guideModal").hidden = false;
 }
 
@@ -365,30 +330,20 @@ function slug(text) {
   return text.toLowerCase().normalize("NFKD").replace(/[^\p{Letter}\p{Number}]+/gu, "-").replace(/^-|-$/g, "");
 }
 
-function searchUrl(place) {
-  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place)}`;
-}
-
-function embedUrl(place) {
-  return `https://www.google.com/maps?q=${encodeURIComponent(place)}&output=embed`;
-}
-
-function liveDirectionsUrl(destination, mode = "transit") {
-  return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(destination)}&travelmode=${googleMode(mode)}`;
-}
-
 function directionsUrl(origin, destination, mode = "transit") {
   return `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(origin)}&destination=${encodeURIComponent(destination)}&travelmode=${googleMode(mode)}`;
 }
 
 function googleMode(mode) {
   if (mode === "walking") return "walking";
+  if (mode === "taxi") return "driving";
   if (mode === "driving") return "driving";
   return "transit";
 }
 
 function modeLabel(mode) {
   if (mode === "walking") return "도보";
+  if (mode === "taxi") return "택시";
   if (mode === "driving") return "차량";
   return "대중교통";
 }

@@ -1,7 +1,7 @@
 {
   "name": "Barcelona 2026 · 명이미와 하여니공주",
   "short_name": "Barcelona 2026",
-  "description": "2026년 바르셀로나 여행을 위한 실제 사용형 PWA 일정 앱",
+  "description": "2026년 바르셀로나 여행 일정",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
