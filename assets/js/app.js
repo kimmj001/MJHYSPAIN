@@ -31,35 +31,12 @@ function renderShell() {
         </div>
       </nav>
 
-      <header class="hero">
-        <div>
-          <div class="eyebrow">${data.travelers}</div>
-          <h1>Barcelona<br>2026</h1>
-          <p>오늘 갈 곳, 다음 이동, 예약 링크만 빠르게 확인합니다.</p>
-        </div>
-        <div class="hero-card">
-          <img src="${data.heroImage}" alt="Barcelona skyline" loading="eager">
-          <div class="poster">
-            <div>${data.dates}</div>
-            <strong>명명이와<br>하여니공주</strong>
-            <div>${data.homeBase}</div>
-          </div>
-        </div>
-      </header>
-
-      <section class="quick-grid">
-        <div class="stat"><small>여행 기간</small><strong>9박 10일</strong></div>
-        <div class="stat"><small>하이라이트</small><strong>Sitges Fireworks</strong></div>
-        <div class="stat"><small>숙소 기준</small><strong>Urgell</strong></div>
-        <div class="stat"><small>핵심 버튼</small><strong>구간 경로</strong></div>
-      </section>
-
       <main class="section" id="plan">
         <div class="section-head">
           <h2>일정</h2>
-          <p>날짜를 누르면 해당 하루가 열립니다. 이동할 때는 일정 사이의 구간 경로 버튼만 누르면 됩니다.</p>
         </div>
         <div class="day-tabs" id="dayTabs"></div>
+        <div class="day-map" id="dayMap" aria-label="당일 일정 지도"></div>
         <div class="day-layout">
           <aside class="day-aside" id="dayAside"></aside>
           <div class="schedule" id="schedule"></div>
@@ -126,18 +103,17 @@ function renderDay(dayId) {
   });
 
   $("#dayAside").innerHTML = `
-    <div class="panel">
-      <div class="eyebrow">${day.date} ${day.weekday} · ${day.mood}</div>
-      <h3>${day.title}</h3>
+      <div class="panel">
+        <div class="eyebrow">${day.date} ${day.weekday} · ${day.mood}</div>
+        <h3>${day.title}</h3>
       <p>${day.summary}</p>
       <div class="metrics">
         <div class="metric"><small>스톱</small><b>${day.stops.length}개</b></div>
         <div class="metric"><small>첫 일정</small><b>${day.stops[0].time}</b></div>
         <div class="metric"><small>마지막</small><b>${day.stops.at(-1).time}</b></div>
         <div class="metric"><small>경로</small><b>실시간</b></div>
+        </div>
       </div>
-    </div>
-    <div class="warning">${day.warning}</div>
   `;
 
   const visibleStops = state.filterFavorites
@@ -151,9 +127,115 @@ function renderDay(dayId) {
         return `${previous ? renderLeg(previous, stop) : ""}${renderStop(day, stop, usedPhotos)}`;
       }).join("")
     : `<div class="stop empty">이 날짜에는 즐겨찾기한 일정이 없습니다.</div>`;
+  $("#dayMap").innerHTML = renderDayMap(day);
 
   observeLazyImages();
   markCurrentStop();
+}
+
+function renderDayMap(day) {
+  const points = mapPointsFor(day);
+  if (!points.length) return "";
+  const routePoints = points.map(point => `${point.x.toFixed(1)},${point.y.toFixed(1)}`).join(" ");
+  return `
+    <div class="map-surface">
+      <svg class="map-route" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        <polyline points="${routePoints}" />
+      </svg>
+      ${points.map(point => `
+        <a class="map-pin${point.highlight ? " highlight" : ""}" href="#${point.id}" style="left:${point.x}%;top:${point.y}%;" aria-label="${point.number}. ${point.title}">
+          <span>${point.number}</span>
+        </a>
+      `).join("")}
+      <div class="map-caption">
+        <b>${day.date}</b>
+        <span>${points.length} stops</span>
+      </div>
+    </div>
+  `;
+}
+
+function mapPointsFor(day) {
+  const rawPoints = day.stops
+    .map((stop, index) => ({ stop, index, coords: coordsForStop(stop) }))
+    .filter(item => item.coords);
+  if (!rawPoints.length) return [];
+
+  const lats = rawPoints.map(item => item.coords.lat);
+  const lngs = rawPoints.map(item => item.coords.lng);
+  const minLat = Math.min(...lats);
+  const maxLat = Math.max(...lats);
+  const minLng = Math.min(...lngs);
+  const maxLng = Math.max(...lngs);
+  const latRange = Math.max(maxLat - minLat, 0.006);
+  const lngRange = Math.max(maxLng - minLng, 0.006);
+  const duplicateCounts = new Map();
+
+  return rawPoints.map(({ stop, index, coords }) => {
+    const key = `${coords.lat.toFixed(4)},${coords.lng.toFixed(4)}`;
+    const duplicateIndex = duplicateCounts.get(key) || 0;
+    duplicateCounts.set(key, duplicateIndex + 1);
+    const offset = duplicateIndex ? Math.min(4, duplicateIndex * 2.2) : 0;
+    const x = clamp(10 + ((coords.lng - minLng) / lngRange) * 80 + offset, 7, 93);
+    const y = clamp(90 - ((coords.lat - minLat) / latRange) * 80 - offset, 7, 93);
+    return {
+      id: stopId(day, stop),
+      number: index + 1,
+      title: stop.title,
+      x,
+      y,
+      highlight: stop.imageKey === "sitgesFireworks" || stop.title.includes("Fireworks")
+    };
+  });
+}
+
+function coordsForStop(stop) {
+  const text = `${stop.title} ${stop.place}`;
+  const rules = [
+    [/Airport|El Prat/, 41.2974, 2.0833],
+    [/Urgell|숙소/, 41.3836, 2.1587],
+    [/Sant Antoni Brunch|Mercat de Sant Antoni|Parlament/, 41.3790, 2.1615],
+    [/Vila de Gracia|Verdi/, 41.4038, 2.1575],
+    [/Park Guell/, 41.4145, 2.1527],
+    [/La Paradeta|Sagrada Familia/, 41.4036, 2.1744],
+    [/Avinguda de Gaudi/, 41.4074, 2.1741],
+    [/Sant Pau|Recinte Modernista/, 41.4135, 2.1746],
+    [/Bunkers|Turo de la Rovira/, 41.4196, 2.1619],
+    [/Travessera de Gracia/, 41.4020, 2.1540],
+    [/Dr\. Stravinsky|Paradiso|Collage|El Born|Passeig del Born|Santa Maria del Mar/, 41.3847, 2.1817],
+    [/Barceloneta Beach/, 41.3780, 2.1920],
+    [/Barceloneta|Can Sole/, 41.3795, 2.1890],
+    [/Port Vell|7 Portes|Isabel II/, 41.3763, 2.1823],
+    [/Port Olimpic|Sailing/, 41.3861, 2.1997],
+    [/Poblenou/, 41.3990, 2.2030],
+    [/Sants Station|Barcelona Sants/, 41.3792, 2.1401],
+    [/Festa Major de Sants|Placa d'Osca|Valladolid|Sants 식당가/, 41.3758, 2.1368],
+    [/Sitges Station/, 41.2383, 1.8108],
+    [/El Cable/, 41.2372, 1.8100],
+    [/Sitges Old Town/, 41.2360, 1.8116],
+    [/Sant Bartomeu|Santa Tecla/, 41.2351, 1.8135],
+    [/Passeig Maritim|Passeig de la Ribera/, 41.2342, 1.8116],
+    [/La Fragata|Fireworks/, 41.2349, 1.8130],
+    [/Passeig de Vilafranca/, 41.2401, 1.8080],
+    [/Placa Catalunya/, 41.3868, 2.1700],
+    [/Granja M\. Viader/, 41.3833, 2.1702],
+    [/Barcelona Cathedral|Placa del Rei|Gothic Quarter/, 41.3840, 2.1769],
+    [/Placa Universitat/, 41.3867, 2.1647],
+    [/Rambla de Catalunya|Ciutat Comtal/, 41.3898, 2.1660],
+    [/Passeig de Gracia|Casa Batllo|Casa Mila/, 41.3917, 2.1649],
+    [/Montserrat|Monistrol|Cremallera|Sant Joan Funicular/, 41.5933, 1.8372],
+    [/Placa Espanya|Plaça d'Espanya/, 41.3751, 2.1494],
+    [/Girona Station/, 41.9794, 2.8168],
+    [/Pont de les Peixateries|Onyar/, 41.9843, 2.8246],
+    [/Girona Old Town|Girona Cathedral|Passeig de la Muralla|Rambla de la Llibertat/, 41.9861, 2.8258],
+    [/Boadas|Tallers/, 41.3851, 2.1710]
+  ];
+  const match = rules.find(([pattern]) => pattern.test(text));
+  return match ? { lat: match[1], lng: match[2] } : null;
+}
+
+function clamp(value, min, max) {
+  return Math.min(max, Math.max(min, value));
 }
 
 function renderLeg(previous, current) {

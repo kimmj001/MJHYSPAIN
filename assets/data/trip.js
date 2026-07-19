@@ -156,7 +156,6 @@ function day(id, date, weekday, title, mood, summary, stops) {
     title,
     mood,
     summary,
-    warning: "길찾기는 Google Maps의 현재 교통/운영 상태를 기준으로 출발 직전에 다시 확인하세요.",
     stops
   };
 }

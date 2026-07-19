@@ -1,12 +1,12 @@
-const CACHE = "barcelona-2026-trip-festival-badges";
+const CACHE = "barcelona-2026-trip-day-map";
 const LOCAL_ASSETS = [
   "./",
   "./index.html",
   "./manifest.webmanifest",
-  "./assets/css/app.css?trip=festival-badges",
-  "./assets/data/trip.js?trip=festival-badges",
-  "./assets/data/photos.js?trip=festival-badges",
-  "./assets/js/app.js?trip=festival-badges",
+  "./assets/css/app.css?trip=day-map",
+  "./assets/data/trip.js?trip=day-map",
+  "./assets/data/photos.js?trip=day-map",
+  "./assets/js/app.js?trip=day-map",
   "./icon-192.png",
   "./icon-512.png"
 ];
