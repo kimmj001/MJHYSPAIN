@@ -33,16 +33,18 @@ window.TRIP_DATA = {
       meal("19:30", "저녁 식사", "Carrer de Verdi 식당가", "Carrer de Verdi, Gracia, Barcelona", "walking", "Gracia 축제를 보면서 현장에서 자유롭게 선택"),
       stop("22:00", "숙소 복귀", "Urgell Barcelona", "lodging", "transit", guide("첫날은 늦게 버티지 않는 것이 다음 날 만족도를 좌우합니다.", "숙소에 돌아오면 Sagrada Familia 티켓 QR, 여권 보관, 물, 편한 신발을 바로 준비하고 잠드는 흐름으로 마무리합니다."))
     ]),
-    day(2, "08.21", "Fri", "Sagrada Familia · Sant Pau · Park Guell", "Gaudi main day", "가우디와 모더니스타 핵심을 보는 메인 데이입니다. 한낮에는 숙소 휴식을 넣어 Park Guell까지 체력을 남깁니다.", [
+    day(2, "08.21", "Fri", "Sagrada Familia · Park Guell · Bunkers · El Born", "Gaudi main day", "가우디와 모더니스타 핵심을 보는 메인 데이입니다. Park Guell 이후 Bunkers 전망을 짧게 보고, 밤에는 El Born에서 조용한 칵테일로 마무리합니다.", [
       stop("08:35", "숙소 출발", "Urgell Barcelona", "lodging", "walking", guide("예약 시간보다 여유 있게 출발해 입장 대기와 보안검색 변수를 흡수합니다.", "QR, 여권명과 티켓명, 가방 크기를 확인하고 Sagrada Familia 앞에서는 사진보다 입장 동선을 먼저 잡습니다.")),
       stop("09:30", "Sagrada Familia", "Sagrada Familia Barcelona", "sagrada", "transit", guide("Sagrada Familia는 1882년에 시작되어 Antoni Gaudi가 생애 후반을 바친 바르셀로나의 상징적인 성당입니다.", "숲처럼 솟은 기둥, 빛을 설계한 스테인드글라스, 탄생·수난 파사드가 각각 다른 방식으로 성서 이야기를 건축으로 풀어내므로 입장 직후에는 중앙 네이브에서 천장 구조와 빛의 방향을 먼저 봅니다.", "스테인드글라스 색이 바닥과 기둥에 어떻게 번지는지 천천히 따라가고, 탑 입장이 있다면 엘리베이터와 하산 동선을 우선 확인합니다."), "https://sagradafamilia.org/en/tickets"),
       stop("11:30", "Avinguda de Gaudi", "Avinguda de Gaudi Barcelona", "avinguda", "walking", guide("Sagrada Familia와 Sant Pau를 잇는 보행축이라 이동 자체가 쉬는 시간입니다.", "그늘이 있는 쪽으로 천천히 걷고, 뒤돌아보면 성당 파사드가 길 끝에 걸리는 장면이 좋아 사진을 짧게 남기기 좋습니다.")),
       stop("12:00", "Sant Pau", "Recinte Modernista de Sant Pau Barcelona", "santpau", "walking", guide("Sant Pau는 Lluís Domenech i Montaner가 설계한 옛 병원 단지로, 치료 공간을 빛·정원·예술과 연결하려 했던 모더니스타 건축의 대표 사례입니다.", "환자들이 머물던 파빌리온과 지하 연결 통로, 장식 타일과 조각을 보면 단순한 병원이 아니라 도시가 만든 치유의 궁전처럼 느껴집니다.", "중앙 정원과 파빌리온 외관을 먼저 보고, 더우면 내부 전시와 복도 동선을 섞어 체온을 낮추며 관람합니다."), "https://santpaubarcelona.org/en/visita/visita-lliure/"),
       meal("13:15", "점심 식사", "La Paradeta Sagrada Familia", "La Paradeta Sagrada Familia, Passatge de Simo, 18, Barcelona", "walking", "Catalan Seafood: Garlic Shrimp, Mussels, Squid"),
       stop("15:00", "숙소 휴식", "Urgell Barcelona", "lodging", "transit", guide("한낮 더위를 끊어주는 핵심 회복 구간입니다.", "샤워와 낮잠을 짧게 하고 Park Guell 티켓, 이동 경로, 물, 모자만 다시 확인해서 저녁 일정의 체력을 남깁니다.")),
-      stop("17:20", "Park Guell", "Park Guell Barcelona", "parkguell", "taxi", guide("Park Guell은 Eusebi Guell이 Gaudi에게 의뢰한 전원 주거지 계획에서 출발했지만, 지금은 바르셀로나를 내려다보는 공공 공원으로 사랑받는 장소입니다.", "자연 지형을 살린 구조, 깨진 타일을 붙인 trencadis 장식, 시장을 상상했던 기둥홀과 긴 벤치가 Gaudi식 도시와 자연의 결합을 보여줍니다.", "예약 시간에 맞춰 Monumental Zone 중심으로 보고, El Drac, Sala Hipostila, 타일 벤치와 전망 구간 순서로 보면 동선이 자연스럽습니다."), "https://parkguell.barcelona/en/buy-tickets"),
-      meal("20:00", "저녁 식사", "Travessera de Gracia 식당가", "Travessera de Gracia, Barcelona", "walking", "Park Guell에서 내려온 뒤 Gracia 지역에서 현장 선택"),
-      stop("22:15", "숙소 복귀", "Urgell Barcelona", "lodging", "transit", guide("가우디 메인 데이를 무사히 닫는 복귀 구간입니다.", "사진 백업, 다음 날 해변용 준비물, 수건이나 얇은 겉옷을 정리하고 발 피로가 있으면 바로 쉬는 편이 좋습니다."))
+      stop("17:20", "Park Guell", "Park Guell Barcelona", "parkguell", "taxi", guide("Park Guell은 Eusebi Guell이 Gaudi에게 의뢰한 전원 주거지 계획에서 출발했지만, 지금은 바르셀로나를 내려다보는 공공 공원으로 사랑받는 장소입니다.", "자연 지형을 살린 구조, 깨진 타일을 붙인 trencadis 장식, 시장을 상상했던 기둥홀과 긴 벤치가 Gaudi식 도시와 자연의 결합을 보여줍니다.", "예약 시간에 맞춰 Monumental Zone 중심으로 보고, El Drac, Sala Hipostila, 타일 벤치와 전망 구간 순서로 보되 Bunkers까지 가려면 18:35 전후에는 나오는 편이 좋습니다."), "https://parkguell.barcelona/en/buy-tickets"),
+      stop("18:55", "Bunkers del Carmel", "MUHBA Turo de la Rovira Barcelona", "bunkers", "taxi", guide("Bunkers del Carmel은 Turó de la Rovira 언덕의 옛 방공포대 자리로, 바르셀로나 전경을 넓게 내려다볼 수 있는 전망 지점입니다.", "해질녘 분위기가 좋지만 최근에는 야간 접근 제한이 있으므로 공식 현장 통제와 폐쇄 시간을 우선하고, 19:30 전에는 내려오는 계획으로 짧고 선명하게 보는 것이 안전합니다.", "Park Guell 이후 일정이 늦어지거나 택시가 잡히지 않으면 과감히 생략하고 El Born 칵테일 시간을 지키는 편이 좋습니다.")),
+      meal("20:00", "저녁 식사", "Travessera de Gracia 식당가", "Travessera de Gracia, Barcelona", "taxi", "Park Guell 또는 Bunkers에서 내려온 뒤 Gracia 지역에서 현장 선택"),
+      stop("21:15", "Dr. Stravinsky Cocktail Bar", "Dr. Stravinsky, Carrer dels Mirallers, 5, Barcelona", "born", "taxi", guide("Dr. Stravinsky는 El Born의 대표적인 칵테일 바로, 실험실 같은 분위기와 향·허브·인퓨전 기반의 시그니처 칵테일이 강점입니다.", "Paradiso보다 대기 부담이 상대적으로 덜한 편이라 Park Guell과 Bunkers 뒤에 넣기 좋고, 클럽처럼 시끄럽게 달리는 밤보다 커플이 한두 잔으로 하루를 닫기에 어울립니다.", "만석이면 가까운 Paradiso나 Collage Cocktail Bar를 백업으로 두고, 22:30 전후에는 숙소 복귀를 시작합니다."), "https://drstravinsky.cat/en/"),
+      stop("22:45", "숙소 복귀", "Urgell Barcelona", "lodging", "taxi", guide("가우디 메인 데이를 무사히 닫는 복귀 구간입니다.", "사진 백업, 다음 날 해변용 준비물, 수건이나 얇은 겉옷을 정리하고 발 피로가 있으면 바로 쉬는 편이 좋습니다."))
     ]),
     day(3, "08.22", "Sat", "Sant Antoni · Barceloneta · Sants", "Sea and festival", "낮에는 바다, 밤에는 Sants 축제입니다. 해변과 식사를 분리해 너무 오래 땡볕 아래 있지 않게 합니다.", [
       stop("10:15", "Sant Antoni Brunch", "Sant Antoni Barcelona brunch", "lodging", "walking", guide("느린 브런치로 시작해 전날 피로를 풀어주는 구간입니다.", "오늘은 햇빛 노출이 많으니 식사 때 물을 충분히 마시고, 해변으로 가기 전 가방을 최대한 가볍게 만듭니다.")),
@@ -69,20 +71,22 @@ window.TRIP_DATA = {
       stop("00:20", "사전 예약 차량", "La Fragata Sitges", "sitgesWait", "driving", guide("불꽃 후 인파가 빠지는 시간이라 픽업 지점 확인이 가장 중요합니다.", "기사에게 정확한 위치를 공유하고, 도로 통제나 접근 제한이 있으면 넓은 길 기준으로 만나도록 바로 조정합니다.")),
       stop("01:15", "숙소 복귀", "Urgell Barcelona", "lodging", "driving", guide("긴 하루를 끝내는 귀가 구간입니다.", "숙소에 도착하면 씻고 바로 쉬며, 다음 날은 회복형 도심 산책이라 늦은 아침까지 무리하지 않아도 됩니다."))
     ]),
-    day(5, "08.24", "Mon", "Gothic Quarter · El Born", "Recovery city walk", "Sitges 다음 날이라 늦게 시작합니다. Gothic과 Born은 촘촘히 보되 카페 휴식 여지를 둡니다.", [
-      stop("11:00", "숙소", "Urgell Barcelona", "lodging", "walking", guide("전날 Sitges 여운을 회복하는 느린 출발입니다.", "컨디션을 먼저 확인하고, 오늘은 체크리스트를 채우기보다 골목 분위기를 부드럽게 즐기는 날로 잡습니다.")),
-      meal("12:30", "점심 식사", "Carrer del Parlament 식당가", "Carrer del Parlament, Barcelona", "walking", "숙소 인근 Sant Antoni에서 현장 선택"),
-      meal("13:40", "오후 간식", "Granja M. Viader", "Granja M. Viader, Carrer d'en Xucla, 4-6, Barcelona", "walking", "Churros, Hot Chocolate"),
-      stop("14:00", "Placa Catalunya", "Placa Catalunya Barcelona", "gothic", "walking", guide("Gothic Quarter로 들어가기 전 기준점입니다.", "인파와 소매치기 밀도가 높은 곳이라 가방을 앞으로 두고, 사진은 짧게 찍은 뒤 바로 대성당 방향으로 이동합니다.")),
-      stop("14:30", "Barcelona Cathedral", "Barcelona Cathedral", "gothic", "walking", guide("Barcelona Cathedral은 13~15세기에 세워진 도시의 주교좌성당으로, 성 십자가와 바르셀로나의 수호성녀 Santa Eulalia에게 바쳐진 고딕 지구의 중심축입니다.", "로마와 중세 도시의 층 위에 자리한 성당이라 외관, 회랑, 광장 주변 골목을 함께 보면 Barcelona가 항구도시에서 중세 도시로 커진 흐름이 보입니다.", "내부 관람은 대기와 복장 기준을 현장에서 판단합니다.")),
+    day(5, "08.24", "Mon", "Gothic Quarter · Picasso · El Born · Sants", "Recovery city walk", "Sitges 다음 날이라 천천히 시작합니다. Gothic과 Born은 유지하되 Picasso Museum은 월요일 휴관 기준이라 외관과 주변 동선 확인으로 가볍게 넣습니다.", [
+      stop("12:00", "숙소", "Urgell Barcelona", "lodging", "walking", guide("전날 Sitges 불꽃과 새벽 귀가의 여운을 회복하는 느린 출발입니다.", "컨디션을 먼저 확인하고, 오늘은 체크리스트를 채우기보다 Gothic Quarter와 El Born의 골목 분위기를 부드럽게 즐기는 날로 잡습니다.")),
+      meal("13:00", "점심 식사", "Carrer del Parlament 식당가", "Carrer del Parlament, Barcelona", "walking", "숙소 인근 Sant Antoni에서 현장 선택"),
+      meal("14:05", "오후 간식", "Granja M. Viader", "Granja M. Viader, Carrer d'en Xucla, 4-6, Barcelona", "walking", "Churros, Hot Chocolate"),
+      stop("14:25", "Placa Catalunya", "Placa Catalunya Barcelona", "gothic", "walking", guide("Gothic Quarter로 들어가기 전 기준점입니다.", "인파와 소매치기 밀도가 높은 곳이라 가방을 앞으로 두고, 사진은 짧게 찍은 뒤 바로 대성당 방향으로 이동합니다.")),
+      stop("14:55", "Barcelona Cathedral", "Barcelona Cathedral", "gothic", "walking", guide("Barcelona Cathedral은 13~15세기에 세워진 도시의 주교좌성당으로, 성 십자가와 바르셀로나의 수호성녀 Santa Eulalia에게 바쳐진 고딕 지구의 중심축입니다.", "로마와 중세 도시의 층 위에 자리한 성당이라 외관, 회랑, 광장 주변 골목을 함께 보면 Barcelona가 항구도시에서 중세 도시로 커진 흐름이 보입니다.", "내부 관람은 대기와 복장 기준을 현장에서 판단합니다.")),
       stop("15:45", "Placa del Rei", "Placa del Rei Barcelona", "gothic", "walking", guide("Placa del Rei는 Palau Reial Major가 둘러싼 중세 바르셀로나 권력의 중심으로, 왕궁의 안뜰처럼 쓰이던 공간입니다.", "돌벽과 계단, Santa Agata 예배당 주변을 보면 로마 Barcino의 흔적 위에 중세 왕궁과 도시 행정이 쌓인 장소라는 느낌이 강하게 남습니다.", "소리가 울리는 조용한 공간이라 잠깐 멈춰 분위기를 느끼고, 다음 골목으로 자연스럽게 이어갑니다.")),
-      stop("16:30", "Gothic Quarter", "Gothic Quarter Barcelona", "gothic", "walking", guide("Gothic Quarter는 로마 식민도시 Barcino에서 시작해 중세 Barcelona의 궁전, 성당, 길드 건물이 겹겹이 남은 역사 중심부입니다.", "Pont del Bisbe와 좁은 골목을 천천히 보면 관광지 한 구역이라기보다 2천 년 가까운 도시의 골격을 그대로 걷는 느낌이 납니다.", "길을 조금 잃어도 괜찮지만 어두운 골목이나 지나치게 붐비는 길은 피하고, 피곤하면 바로 Born 방향으로 넘어갑니다.")),
-      stop("17:30", "Santa Maria del Mar", "Santa Maria del Mar Barcelona", "born", "walking", guide("Santa Maria del Mar는 14세기 La Ribera와 Born의 상인·선원·주민들이 함께 세운 Catalan Gothic 성당입니다.", "Barcelona Cathedral이 도시 권위의 느낌이라면 이곳은 바다와 무역으로 성장한 시민들의 성당에 가까워, 넓고 단정한 내부와 높은 기둥에서 훨씬 담백한 힘이 느껴집니다.", "내부가 열려 있으면 잠깐 들어가 빛의 느낌을 보고, 닫혀 있으면 외관과 광장 분위기만 봐도 충분합니다.")),
+      stop("16:25", "Gothic Quarter", "Gothic Quarter Barcelona", "gothic", "walking", guide("Gothic Quarter는 로마 식민도시 Barcino에서 시작해 중세 Barcelona의 궁전, 성당, 길드 건물이 겹겹이 남은 역사 중심부입니다.", "Pont del Bisbe와 좁은 골목을 천천히 보면 관광지 한 구역이라기보다 2천 년 가까운 도시의 골격을 그대로 걷는 느낌이 납니다.", "길을 조금 잃어도 괜찮지만 어두운 골목이나 지나치게 붐비는 길은 피하고, 피곤하면 바로 Born 방향으로 넘어갑니다.")),
+      stop("17:10", "Picasso Museum", "Museu Picasso Barcelona", "born", "walking", guide("Picasso Museum은 Picasso의 초기 작품과 Barcelona 시절을 이해하기 좋은 El Born의 핵심 미술관입니다.", "다만 2026년 8월 24일은 월요일이고, 공식 운영 기준상 매주 월요일은 휴관이므로 내부 관람 일정으로 잡지 않습니다.", "오늘은 외관과 주변 골목만 확인하고, 실제 내부 관람을 원하면 다른 날짜의 공식 티켓 가능 여부를 별도로 확인하는 편이 정확합니다."), "https://museupicassobcn.cat/en/plan-your-visit/buy-tickets-and-opening-hours"),
+      stop("17:40", "Santa Maria del Mar", "Santa Maria del Mar Barcelona", "born", "walking", guide("Santa Maria del Mar는 14세기 La Ribera와 Born의 상인·선원·주민들이 함께 세운 Catalan Gothic 성당입니다.", "Barcelona Cathedral이 도시 권위의 느낌이라면 이곳은 바다와 무역으로 성장한 시민들의 성당에 가까워, 넓고 단정한 내부와 높은 기둥에서 훨씬 담백한 힘이 느껴집니다.", "내부가 열려 있으면 잠깐 들어가 빛의 느낌을 보고, 닫혀 있으면 외관과 광장 분위기만 봐도 충분합니다.")),
       stop("18:30", "El Born", "El Born Barcelona", "born", "walking", guide("편집숍, 카페, 작은 골목이 이어지는 저녁 산책 구간입니다.", "쇼핑보다 분위기와 휴식을 우선하고, 발이 피곤하면 카페를 하나 정해 오래 앉아도 일정이 무너지지 않습니다.")),
       meal("19:00", "저녁 식사", "Passeig del Born 식당가", "Passeig del Born, Barcelona", "walking", "El Born에서 타파스 식당 현장 선택"),
-      stop("21:30", "숙소 복귀", "Urgell Barcelona", "lodging", "transit", guide("회복형 도심 산책을 마치는 구간입니다.", "다음 날 Montserrat 출발이 매우 빠르므로 귀가 후 물, 모자, 편한 신발, 교통 동선을 미리 준비합니다."))
+      stop("20:45", "Festa Major de Sants", "Placa d'Osca Barcelona", "santsFestival", "taxi", guide("회복형 하루의 밤 일정이므로 Sants Festival은 짧고 밀도 있게 봅니다.", "장식 거리와 Placa d'Osca 주변만 가볍게 확인하고, 다음 날 Montserrat 출발이 빠르므로 붐비거나 피곤하면 바로 숙소로 돌아갑니다."), "https://www.barcelona.cat/en/what-to-do-in-bcn/popular-festivals/festa-major-de-sants"),
+      stop("22:15", "숙소 복귀", "Urgell Barcelona", "lodging", "taxi", guide("회복형 도심 산책과 짧은 축제 밤을 마치는 구간입니다.", "다음 날 Montserrat 출발이 매우 빠르므로 귀가 후 물, 모자, 편한 신발, 교통 동선을 미리 준비합니다."))
     ]),
-    day(6, "08.25", "Tue", "Montserrat", "Mountain day", "산악 교통과 수도원, Sant Joan 전망을 보는 날입니다. 출발이 빠르므로 전날 밤 준비가 중요합니다.", [
+    day(6, "08.25", "Tue", "Montserrat · Rooftop", "Mountain day", "산악 교통과 수도원, Sant Joan 전망을 보는 날입니다. 저녁에는 숙소 근처에서 회복한 뒤 접근성 좋은 루프탑으로 야경을 짧게 봅니다.", [
       stop("07:30", "숙소 출발", "Urgell Barcelona", "lodging", "walking", guide("Montserrat는 아침 출발의 정확도가 전체 만족도를 좌우합니다.", "물, 모자, 선크림, 간식, 교통권 또는 예매 화면을 확인하고 불필요한 짐은 숙소에 둡니다.")),
       stop("08:00", "Placa d'Espanya FGC", "Placa Espanya FGC Barcelona", "montserrat", "walking", guide("FGC R5와 Cremallera 연결을 시작하는 역입니다.", "역 내부 동선이 넓으니 전광판에서 방향과 플랫폼을 먼저 확인하고, 여유가 있으면 화장실을 다녀오는 편이 좋습니다."), "https://www.fgc.cat/en/"),
       stop("08:15", "FGC R5", "Placa Espanya FGC Barcelona", "montserrat", "transit", guide("Montserrat 방향 열차 탑승 구간입니다.", "Monistrol de Montserrat 연결을 놓치지 않도록 하차역을 계속 확인하고, 창밖 풍경은 산에 가까워질수록 좋아집니다.")),
@@ -92,9 +96,10 @@ window.TRIP_DATA = {
       stop("13:00", "Sant Joan Funicular", "Funicular de Sant Joan Montserrat", "montserrat", "walking", guide("Sant Joan Funicular는 수도원 위쪽 능선으로 올라가 Montserrat의 바위 봉우리와 평야를 한눈에 보게 해주는 산악 철도입니다.", "예전 은둔처와 산길로 이어지는 방향이라 수도원만 볼 때보다 이 산이 왜 Catalonia 사람들에게 특별한 풍경인지 훨씬 선명하게 느껴집니다.", "위쪽은 그늘이 적고 바람이 강할 수 있으니 물과 모자를 챙기고, 컨디션이 애매하면 짧은 전망 루트만 보고 내려옵니다.")),
       stop("15:30", "수도원 복귀", "Montserrat Monastery", "montserrat", "transit", guide("하산 교통 시간에 맞춰 여유 있게 수도원 쪽으로 돌아옵니다.", "기념품이나 카페는 남은 시간으로만 보고, Cremallera와 FGC 연결이 꼬이지 않게 출발 시간을 먼저 확인합니다.")),
       stop("16:30", "Barcelona 귀환", "Placa Espanya Barcelona", "montserrat", "transit", guide("FGC로 바르셀로나에 돌아오는 구간입니다.", "산에서 내려온 뒤 피로가 크게 올 수 있으니 저녁 욕심은 줄이고, 숙소 근처에서 회복하는 흐름으로 생각합니다.")),
-      stop("18:30", "숙소 인근", "Urgell Barcelona", "lodging", "walking", guide("샤워와 휴식 후 숙소 근처에서 가볍게 저녁을 먹습니다.", "오늘은 산악 이동이 많았으므로 멀리 나가지 말고, 다음 날 Casa Batllo 밤 일정까지 체력을 회복합니다.")),
+      stop("18:30", "숙소 인근", "Urgell Barcelona", "lodging", "walking", guide("샤워와 휴식 후 숙소 근처에서 가볍게 저녁을 먹습니다.", "오늘은 산악 이동이 많았으므로 저녁 식사는 멀리 나가지 말고, 루프탑은 컨디션이 괜찮을 때만 짧게 다녀오는 흐름이 좋습니다.")),
       meal("19:00", "저녁 식사", "Carrer del Parlament 식당가", "Carrer del Parlament, Barcelona", "walking", "바르셀로나 복귀 후 숙소 근처에서 선택"),
-      stop("21:00", "숙소 복귀", "Urgell Barcelona", "lodging", "walking", guide("산악 데이를 일찍 닫는 마무리입니다.", "사진 백업과 신발 정리만 하고, 다음 날 쇼핑과 밤 공연을 위해 잠을 충분히 확보합니다."))
+      stop("20:30", "La Isabela Rooftop", "La Isabela Hotel 1898 Barcelona", "gothic", "walking", guide("La Isabela는 Hotel 1898의 루프탑 테라스로, La Rambla 중심에서 바르셀로나 지붕선과 저녁 야경을 보기 좋은 곳입니다.", "숙소 Urgell 쪽에서 접근이 비교적 단순하고, 산악 이동 후에도 한 잔만 마시고 돌아오기 좋아 커플 분위기의 짧은 야경 코스로 적합합니다.", "비투숙객 입장은 가능하더라도 좌석은 현장 상황에 따라 달라질 수 있으니, 만석이거나 피곤하면 무리하지 말고 숙소 복귀를 우선합니다."), "https://www.hotel1898.com/en/terrace-la-isabela"),
+      stop("22:00", "숙소 복귀", "Urgell Barcelona", "lodging", "walking", guide("산악 데이를 차분히 닫는 마무리입니다.", "사진 백업과 신발 정리만 하고, 다음 날 쇼핑과 밤 공연을 위해 잠을 충분히 확보합니다."))
     ]),
     day(7, "08.26", "Wed", "Shopping · Casa Batllo", "Couple highlight", "낮에는 쇼핑, 밤에는 Casa Batllo Magical Nights입니다. 시간을 충분히 비우고 옷을 갈아입는 여유를 둡니다.", [
       stop("10:30", "Placa Universitat", "Placa Universitat Barcelona", "shopping", "walking", guide("쇼핑 동선으로 들어가기 전 기준점입니다.", "오늘은 많이 걸을 수 있으니 처음부터 속도를 올리지 말고, 사고 싶은 품목과 쉬는 지점을 간단히 정하고 시작합니다.")),
@@ -123,15 +128,16 @@ window.TRIP_DATA = {
       stop("20:00", "숙소 복귀", "Urgell Barcelona", "lodging", "transit", guide("긴 걷기 데이를 마무리하는 시간입니다.", "발 피로를 풀고 사진을 백업한 뒤, 마지막 풀데이인 Sailing과 7 Portes 일정을 위해 일찍 쉬어갑니다.")),
       meal("20:30", "저녁 식사", "Carrer del Parlament 식당가", "Carrer del Parlament, Barcelona", "walking", "Girona에서 돌아온 뒤 숙소 근처에서 자유 식사")
     ]),
-    day(9, "08.28", "Fri", "Sailing · 7 Portes · Sants", "Last full day", "마지막 완전한 하루입니다. 낮에는 바다, 밤에는 7 Portes와 Sants 축제로 마무리합니다.", [
+    day(9, "08.28", "Fri", "Sailing · 7 Portes · Sants · Cocktail", "Last full day", "마지막 완전한 하루입니다. 낮에는 바다, 밤에는 7 Portes, Sants 축제, 클래식 칵테일 바로 여행의 마지막 밤 느낌을 살립니다.", [
       meal("10:30", "브런치", "Rambla del Poblenou 식당가", "Rambla del Poblenou, Barcelona", "walking", "Port Olimpic과 요트 일정 전 브런치"),
       stop("11:45", "Port Olimpic", "Port Olimpic Barcelona", "sailing", "transit", guide("세일링 미팅 포인트를 찾는 구간입니다.", "항구는 비슷한 선착장이 많으니 업체가 보낸 정확한 위치와 보트 이름을 확인하고, 늦지 않게 도착합니다.")),
       stop("12:00", "Barcelona Sailing", "Port Olimpic Barcelona", "sailing", "walking", guide("바다에서 바르셀로나를 보는 마지막 큰 장면입니다.", "바람과 파도에 따라 코스가 달라질 수 있으니 선장 안내를 우선하고, 휴대폰은 스트랩이나 가방 안에 안전하게 둡니다.")),
       meal("14:30", "점심 식사", "Port Olimpic 식당가", "Port Olimpic, Barcelona", "walking", "요트 투어 종료 후 해변 인근에서 가벼운 점심"),
       stop("16:00", "숙소 복귀", "Urgell Barcelona", "lodging", "transit", guide("마지막 저녁 전 휴식과 짐 정리를 겸합니다.", "귀국 준비를 조금 해두면 밤을 더 편하게 즐길 수 있고, 7 Portes 예약 시간에 맞춰 옷을 갈아입습니다.")),
-      meal("19:30", "저녁 식사", "Passeig d'Isabel II 식당가", "Passeig d'Isabel II, Barcelona", "transit", "마지막 저녁 식사 장소"),
-      stop("22:00", "Festa Major de Sants", "Festa Major de Sants Barcelona", "santsFestival", "transit", guide("여행의 마지막 축제 밤입니다.", "오래 머물기보다 분위기만 한 번 더 보고, 다음 날 공항 이동을 생각해 복귀 시간을 확실히 정해둡니다."), "https://www.barcelona.cat/en/what-to-do-in-bcn/popular-festivals/festa-major-de-sants"),
-      stop("23:30", "숙소 복귀", "Urgell Barcelona", "lodging", "transit", guide("귀국 전 마지막 밤 복귀입니다.", "여권, 항공권, 충전기, 기념품, 짐 무게를 확인하고 공항 이동 가방을 따로 정리합니다."))
+      meal("19:30", "저녁 식사", "7 Portes", "7 Portes, Passeig d'Isabel II, 14, Barcelona", "transit", "Paella Parellada, Crema Catalana"),
+      stop("21:30", "Festa Major de Sants", "Festa Major de Sants Barcelona", "santsFestival", "taxi", guide("여행의 마지막 축제 밤입니다.", "오래 머물기보다 분위기만 한 번 더 보고, 22:30 칵테일바 이동을 기준으로 복귀 방향을 잡습니다."), "https://www.barcelona.cat/en/what-to-do-in-bcn/popular-festivals/festa-major-de-sants"),
+      stop("22:30", "Boadas Cocktails", "Boadas Cocktails, Carrer dels Tallers, 1, Barcelona", "gothic", "taxi", guide("Boadas Cocktails는 1930년대부터 이어진 바르셀로나의 클래식 칵테일 바로, 마지막 밤을 조용하고 성숙하게 마무리하기 좋습니다.", "Sants에서 너무 늦게 버티는 대신 중심부로 돌아와 한 잔만 마시면 숙소 Urgell 방향 복귀도 단순해집니다.", "시끄러운 클럽 분위기를 원하지 않는 날에 잘 맞고, 복장은 너무 해변 차림보다 단정하게 정리하는 편이 좋습니다.")),
+      stop("23:45", "숙소 복귀", "Urgell Barcelona", "lodging", "walking", guide("귀국 전 마지막 밤 복귀입니다.", "여권, 항공권, 충전기, 기념품, 짐 무게를 확인하고 공항 이동 가방을 따로 정리합니다."))
     ]),
     day(10, "08.29", "Sat", "Departure", "Clean departure", "출국일은 관광을 무리하지 않고 숙소 주변과 공항 이동에 집중합니다.", [
       stop("09:00", "숙소", "Urgell Barcelona", "lodging", "walking", guide("짐을 정리하고 빠진 물건을 확인하는 아침입니다.", "여권, 지갑, 항공권, 충전기, 기념품을 한 번에 체크하고 액체류와 배터리 위치를 정리합니다.")),
@@ -203,6 +209,7 @@ function mealImageKey(title) {
   if (title.includes("Llibertat")) return "mealGirona";
   if (title.includes("Poblenou")) return "mealPoblenou";
   if (title.includes("Port Olimpic")) return "mealPort";
+  if (title.includes("7 Portes")) return "mealSeafood";
   if (title.includes("Isabel")) return "mealSeafood";
   return "mealTapas";
 }
@@ -216,6 +223,7 @@ function mealPointText(title, mealNote) {
   if (title.includes("Mercat")) return "시장 안에서 가볍게 고르는 첫 식사입니다. Jamon, Bocadillo, Fresh Juice처럼 바로 먹기 쉬운 조합을 고르면 도착일 컨디션을 크게 쓰지 않습니다.";
   if (title.includes("Montserrat")) return "산 위 식사는 선택지가 많지 않아 빠르고 든든한 메뉴가 우선입니다. 너무 오래 기다리기보다 간단한 샌드위치나 따뜻한 접시 하나로 Sant Joan 이동 전 에너지를 채웁니다.";
   if (title.includes("Ribera")) return "Sitges 해변 저녁은 맛보다 자리와 퇴장 동선이 중요합니다. 바다를 볼 수 있고 La Fragata로 이동하기 쉬운 곳을 고르면 불꽃 대기 흐름이 편합니다.";
+  if (title.includes("7 Portes")) return "Barcelona의 클래식 레스토랑 중 하나로 마지막 저녁 분위기를 잡기 좋습니다. Paella Parellada처럼 먹기 편한 쌀요리와 Crema Catalana를 나눠 먹으면 전통적인 마무리감이 좋습니다.";
   if (title.includes("Isabel")) return "마지막 저녁은 Port Vell과 El Born 사이에서 분위기를 잡는 식사입니다. 해산물, 쌀요리, 타파스 중 컨디션에 맞춰 고르고 Sants 이동 여부를 식사 중 결정하면 좋습니다.";
   if (title.includes("Valladolid") || title.includes("Sants")) return "Sants 축제 주변 식당가는 오래 앉기보다 가볍게 먹는 것이 좋습니다. 붐비는 골목을 피해 회전이 빠른 타파스나 간단한 접시 위주로 고르세요.";
   if (title.includes("Poblenou")) return "요트 일정 전 브런치라 과하게 무겁지 않게 먹는 것이 좋습니다. 빵, 계란, 커피처럼 속이 편한 메뉴를 고르면 바다 위에서도 부담이 적습니다.";
