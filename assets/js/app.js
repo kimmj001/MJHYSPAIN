@@ -435,11 +435,21 @@ function renderStop(day, item, usedPhotos, sequence) {
         <button class="pill-btn primary" data-action="open-meal-point" data-day="${day.id}" data-stop="${id}">식사 포인트</button>
       </div>` : `<div class="stop-toolbar">
         <button class="pill-btn primary" data-action="open-guide" data-day="${day.id}" data-stop="${id}">관람 가이드</button>
-        ${item.official ? `<a class="pill-btn" href="${item.official}" target="_blank" rel="noreferrer">공식 링크</a>` : ""}
+        ${renderStopAction(item)}
       </div>`}
 
     </article>
   `;
+}
+
+function renderStopAction(item) {
+  if (item.bookingPdf) {
+    const filename = item.bookingFileName ? ` download="${item.bookingFileName}"` : " download";
+    return `<a class="pill-btn" href="${item.bookingPdf}"${filename}>예약 확인 PDF</a>`;
+  }
+  return item.official
+    ? `<a class="pill-btn" href="${item.official}" target="_blank" rel="noreferrer">공식 링크</a>`
+    : "";
 }
 
 function rotateImages(images, seed = 0) {
@@ -531,9 +541,7 @@ function openGuide(dayId, id) {
   $("#guideTime").textContent = `${day.date} ${day.weekday} · ${stop.time}`;
   $("#guideTitle").textContent = stop.title;
   $("#guideBody").textContent = stop.guide;
-  $("#guideActions").innerHTML = stop.official
-    ? `<a class="pill-btn" href="${stop.official}" target="_blank" rel="noreferrer">공식 링크</a>`
-    : "";
+  $("#guideActions").innerHTML = renderStopAction(stop);
   $("#guideModal").hidden = false;
 }
 

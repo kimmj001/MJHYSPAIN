@@ -1,12 +1,13 @@
-const CACHE = "barcelona-2026-trip-day7-luxury-shopping";
+const CACHE = "barcelona-2026-trip-casa-batllo-booking-pdf";
 const LOCAL_ASSETS = [
   "./",
   "./index.html",
   "./manifest.webmanifest",
-  "./assets/css/app.css?trip=day7-luxury-shopping",
-  "./assets/data/trip.js?trip=day7-luxury-shopping",
-  "./assets/data/photos.js?trip=day7-luxury-shopping",
-  "./assets/js/app.js?trip=day7-luxury-shopping",
+  "./assets/css/app.css?trip=casa-batllo-booking-pdf",
+  "./assets/data/trip.js?trip=casa-batllo-booking-pdf",
+  "./assets/data/photos.js?trip=casa-batllo-booking-pdf",
+  "./assets/js/app.js?trip=casa-batllo-booking-pdf",
+  "./assets/docs/casa-batllo-magical-nights-102972417.pdf",
   "./icon-192.png",
   "./icon-512.png"
 ];

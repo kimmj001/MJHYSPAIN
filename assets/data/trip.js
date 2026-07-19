@@ -108,8 +108,8 @@ window.TRIP_DATA = {
       meal("13:30", "점심 식사", "Ciutat Comtal", "Ciutat Comtal, Rambla de Catalunya, Barcelona", "walking", "Pintxos, Grilled Squid"),
       stop("15:30", "숙소 휴식", "Urgell Barcelona", "lodging", "walking", guide("Magical Nights 전에 옷을 갈아입고 쉬는 핵심 구간입니다.", "QR, 예약 시간, 배터리, 가벼운 겉옷을 확인하고 쇼핑한 물건은 숙소에 두어 밤 동선을 가볍게 만듭니다.")),
       stop("19:30", "Casa Batllo", "Casa Batllo Barcelona", "batllo", "walking", guide("Casa Batllo는 섬유 사업가 Josep Batllo의 집을 Gaudi가 1904~1906년에 완전히 새롭게 바꾼 Passeig de Gracia의 대표 모더니스타 건축입니다.", "뼈처럼 보이는 발코니, 물결치는 파사드, 용의 등처럼 읽히는 지붕 때문에 동화적인 외관으로 유명하지만 실제로는 빛과 환기, 생활 동선까지 세밀하게 설계된 집입니다.", "입장 전 Passeig de Gracia의 저녁빛에서 파사드를 먼저 보고, 입장 줄과 티켓 확인 위치를 파악해 공연 전 흐름을 안정시킵니다.")),
-      stop("20:00", "Casa Batllo Visit", "Casa Batllo Barcelona", "batllo", "walking", guide("Casa Batllo 내부 관람은 Gaudi가 장식가가 아니라 생활 전체를 설계한 건축가였다는 점을 보는 시간입니다.", "Main Floor의 곡선형 창, 파란빛이 깊어지는 lightwell, 고래 뼈처럼 이어지는 attic, 용의 등처럼 펼쳐지는 rooftop을 순서대로 보면 집 안에서 빛과 공기가 어떻게 움직이는지 자연스럽게 이해됩니다.", "옥상에서는 공연 이동 시간을 의식해 너무 늦게 머물지 않습니다."), "https://www.casabatllo.es/en/online-tickets/visit-magic-nights/"),
-      stop("21:00", "Magical Nights", "Casa Batllo Barcelona", "batllo", "walking", guide("옥상 콘서트와 야간 분위기를 즐기는 하이라이트입니다.", "공연 전후 이동 동선이 좁아질 수 있으니 서두르지 말고, 사진보다 둘이 앉아 있는 시간을 충분히 남기는 편이 좋습니다."), "https://www.casabatllo.es/en/online-tickets/visit-magic-nights/"),
+      stop("20:00", "Casa Batllo Visit", "Casa Batllo Barcelona", "batllo", "walking", guide("Casa Batllo 내부 관람은 Gaudi가 장식가가 아니라 생활 전체를 설계한 건축가였다는 점을 보는 시간입니다.", "Main Floor의 곡선형 창, 파란빛이 깊어지는 lightwell, 고래 뼈처럼 이어지는 attic, 용의 등처럼 펼쳐지는 rooftop을 순서대로 보면 집 안에서 빛과 공기가 어떻게 움직이는지 자연스럽게 이해됩니다.", "옥상에서는 공연 이동 시간을 의식해 너무 늦게 머물지 않습니다."), "", "예약 완료 · 예약번호 102972417", "assets/docs/casa-batllo-magical-nights-102972417.pdf", "Casa_Batllo_Magical_Nights_102972417.pdf"),
+      stop("21:00", "Magical Nights", "Casa Batllo Barcelona", "batllo", "walking", guide("옥상 콘서트와 야간 분위기를 즐기는 하이라이트입니다.", "공연 전후 이동 동선이 좁아질 수 있으니 서두르지 말고, 사진보다 둘이 앉아 있는 시간을 충분히 남기는 편이 좋습니다."), "", "예약 완료 · 예약번호 102972417", "assets/docs/casa-batllo-magical-nights-102972417.pdf", "Casa_Batllo_Magical_Nights_102972417.pdf"),
       meal("22:15", "저녁 식사", "Rambla de Catalunya 식당가", "Rambla de Catalunya, Barcelona", "walking", "Casa Batllo Magical Nights 종료 후 현장 선택"),
       stop("23:30", "숙소 복귀", "Urgell Barcelona", "lodging", "walking", guide("다음 날 Girona 출발이 빠르므로 바로 정리하는 복귀입니다.", "기차 예매 화면, 신분증, 보조배터리를 한곳에 두고 알람을 이중으로 맞춰둡니다."))
     ]),
@@ -162,7 +162,7 @@ function day(id, date, weekday, title, mood, summary, stops) {
   };
 }
 
-function stop(time, title, place, imageKey, travelMode, guide, official = "", reservationNote = "") {
+function stop(time, title, place, imageKey, travelMode, guide, official = "", reservationNote = "", bookingPdf = "", bookingFileName = "") {
   return {
     type: "stop",
     time,
@@ -172,7 +172,9 @@ function stop(time, title, place, imageKey, travelMode, guide, official = "", re
     travelMode,
     guide,
     official,
-    reservationNote
+    reservationNote,
+    bookingPdf,
+    bookingFileName
   };
 }
 
