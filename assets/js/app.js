@@ -178,6 +178,7 @@ function renderStop(day, item, usedPhotos) {
     return true;
   });
   const favorite = state.favorites.includes(id);
+  const festivalBadge = festivalBadgeFor(day, item);
   return `
     <article class="stop${item.mealLabel ? " meal-stop" : ""}" id="${id}" data-time="${item.time}">
       <div class="stop-head">
@@ -185,6 +186,7 @@ function renderStop(day, item, usedPhotos) {
         <div>
           ${item.mealLabel ? `<div class="meal-label">${item.mealLabel}</div>` : ""}
           <h3>${item.title}</h3>
+          ${festivalBadge ? renderFestivalBadge(festivalBadge) : ""}
           <p>${item.place}</p>
           ${item.mealNote ? `<p class="meal-note">${item.mealNote}</p>` : ""}
         </div>
@@ -209,6 +211,27 @@ function renderStop(day, item, usedPhotos) {
 
     </article>
   `;
+}
+
+function festivalBadgeFor(day, item) {
+  const key = `${day.id}-${item.time}-${item.title}`;
+  const badges = {
+    "1-18:30-Vila de Gracia": { label: "🎉 Festa Major de Gràcia" },
+    "3-20:45-Festa Major de Sants": { label: "🎊 Festa Major de Sants" },
+    "4-15:00-Sitges Old Town": { label: "🎆 Sitges Festa Major", tone: "sitges" },
+    "4-23:00-Festa Major Fireworks": { label: "🎇 Sitges Fireworks", tone: "fireworks" },
+    "5-20:45-Festa Major de Sants": { label: "🎊 Festa Major de Sants" },
+    "9-21:30-Festa Major de Sants": { label: "🎊 Festa Major de Sants" }
+  };
+  return badges[key] || null;
+}
+
+function renderFestivalBadge(badge) {
+  const tone = badge.tone ? ` ${badge.tone}` : "";
+  const sparkles = badge.tone === "fireworks"
+    ? `<span class="sparkle one"></span><span class="sparkle two"></span><span class="sparkle three"></span>`
+    : "";
+  return `<div class="festival-badge${tone}"><span>${badge.label}</span>${sparkles}</div>`;
 }
 
 function bindActions() {

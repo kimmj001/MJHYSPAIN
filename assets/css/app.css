@@ -337,6 +337,58 @@ img { display: block; width: 100%; }
   font-size: 22px;
   line-height: 1.15;
 }
+.festival-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  margin-top: 6px;
+  padding: 4px 9px;
+  border: 1px solid rgba(226, 85, 61, .16);
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(255, 246, 230, .88), rgba(255, 232, 226, .62));
+  color: #8f4435;
+  font-size: 12px;
+  font-weight: 850;
+  line-height: 1.15;
+  box-shadow: 0 5px 16px rgba(123, 72, 45, .07);
+}
+.festival-badge.sitges,
+.festival-badge.fireworks {
+  border-color: rgba(60, 117, 151, .18);
+  background: linear-gradient(135deg, rgba(235, 248, 255, .92), rgba(255, 238, 220, .7));
+  color: #365f79;
+}
+.festival-badge.fireworks {
+  padding-right: 18px;
+}
+.festival-badge .sparkle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #f2b84b;
+  opacity: .2;
+  animation: festivalSparkle 2.4s ease-in-out infinite;
+}
+.festival-badge .sparkle.one {
+  right: 8px;
+  top: -3px;
+}
+.festival-badge .sparkle.two {
+  right: 2px;
+  top: 7px;
+  animation-delay: .7s;
+}
+.festival-badge .sparkle.three {
+  right: 12px;
+  bottom: -3px;
+  animation-delay: 1.3s;
+}
+@keyframes festivalSparkle {
+  0%, 100% { opacity: .16; transform: scale(.7); }
+  45% { opacity: .9; transform: scale(1.35); }
+}
 .stop p {
   margin: 4px 0 0;
   color: var(--muted);
