@@ -125,7 +125,7 @@ function renderDay(dayId) {
   $("#schedule").innerHTML = visibleStops.length
     ? visibleStops.map((stop, index) => {
         const previous = visibleStops[index - 1];
-        return `${previous ? renderLeg(previous, stop) : ""}${renderStop(day, stop, usedPhotos, index + 1)}`;
+        return `${previous ? renderLeg(day, previous, stop, index) : ""}${renderStop(day, stop, usedPhotos, index + 1)}`;
       }).join("")
     : `<div class="stop empty">이 날짜에는 즐겨찾기한 일정이 없습니다.</div>`;
   $("#dayMap").innerHTML = renderDayMap(day, visibleStops);
@@ -321,7 +321,10 @@ function escapeHtml(value) {
   }[char]));
 }
 
-function renderLeg(previous, current) {
+function renderLeg(day, previous, current, currentIndex) {
+  const custom = routeCardOverride(day, previous, current, currentIndex);
+  if (custom) return custom;
+
   const mode = current.travelMode || "transit";
   const modeClass = ` mode-${mode}`;
   return `
@@ -332,6 +335,59 @@ function renderLeg(previous, current) {
         <div class="route">${previous.place} → ${current.place}</div>
       </div>
       <a class="pill-btn" href="${directionsUrl(previous.place, current.place, mode)}" target="_blank" rel="noreferrer">구간 경로</a>
+    </div>
+  `;
+}
+
+function routeCardOverride(day, previous, current, currentIndex) {
+  if (day.id !== 6) return "";
+
+  const from = currentIndex;
+  const to = currentIndex + 1;
+  const key = `${from}-${to}`;
+  const routeUrl = directionsUrl(previous.place, current.place, current.travelMode || "transit");
+  const imageCards = {
+    "3-4": {
+      src: "assets/images/route-cards/r5-train.png",
+      alt: "FGC R5 train to Montserrat"
+    },
+    "5-6": {
+      src: "assets/images/route-cards/aeri-cablecar.png",
+      alt: "Aeri de Montserrat cable car"
+    },
+    "10-11": {
+      src: "assets/images/route-cards/aeri-cablecar.png",
+      alt: "Aeri de Montserrat cable car descent"
+    },
+    "12-13": {
+      src: "assets/images/route-cards/r5-train.png",
+      alt: "FGC R5 train back to Barcelona"
+    }
+  };
+
+  if (key === "2-3") {
+    return `
+      <div class="leg simple-leg">
+        <strong>표 현장구매 & 열차 대기</strong>
+      </div>
+    `;
+  }
+
+  if (key === "4-5" || key === "11-12") {
+    return `
+      <div class="leg simple-leg walk-leg">
+        <strong>도보 5분</strong>
+      </div>
+    `;
+  }
+
+  const image = imageCards[key];
+  if (!image) return "";
+
+  return `
+    <div class="leg visual-leg${image.alt.includes("cable") ? " cablecar-visual-leg" : " train-visual-leg"}">
+      <img src="${image.src}" alt="${image.alt}" loading="lazy" decoding="async">
+      <a class="pill-btn" href="${routeUrl}" target="_blank" rel="noreferrer">구간 경로</a>
     </div>
   `;
 }
