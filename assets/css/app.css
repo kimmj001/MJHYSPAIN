@@ -407,6 +407,13 @@ img { display: block; width: 100%; }
   line-height: 1.2;
 }
 .panel p { margin: 0; color: var(--muted); font-size: 14px; }
+.stop-subtitle {
+  margin-top: 2px !important;
+  color: #1d3f3c !important;
+  font-size: 12px !important;
+  font-weight: 850;
+  letter-spacing: 0;
+}
 .reservation-note {
   display: inline-flex;
   align-items: center;

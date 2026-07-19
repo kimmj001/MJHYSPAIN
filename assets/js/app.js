@@ -413,6 +413,7 @@ function renderStop(day, item, usedPhotos, sequence) {
         <div>
           ${item.mealLabel ? `<div class="meal-label">${item.mealLabel}</div>` : ""}
           <h3>${item.title}</h3>
+          ${item.subtitle ? `<p class="stop-subtitle">${item.subtitle}</p>` : ""}
           ${festivalBadge ? renderFestivalBadge(festivalBadge) : ""}
           <p>${item.place}</p>
           ${item.mealNote ? `<p class="meal-note">${item.mealNote}</p>` : ""}

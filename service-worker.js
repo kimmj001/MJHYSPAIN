@@ -1,12 +1,12 @@
-const CACHE = "barcelona-2026-trip-montserrat-reservation-note";
+const CACHE = "barcelona-2026-trip-day7-luxury-shopping";
 const LOCAL_ASSETS = [
   "./",
   "./index.html",
   "./manifest.webmanifest",
-  "./assets/css/app.css?trip=montserrat-reservation-note",
-  "./assets/data/trip.js?trip=montserrat-reservation-note",
-  "./assets/data/photos.js?trip=montserrat-reservation-note",
-  "./assets/js/app.js?trip=montserrat-reservation-note",
+  "./assets/css/app.css?trip=day7-luxury-shopping",
+  "./assets/data/trip.js?trip=day7-luxury-shopping",
+  "./assets/data/photos.js?trip=day7-luxury-shopping",
+  "./assets/js/app.js?trip=day7-luxury-shopping",
   "./icon-192.png",
   "./icon-512.png"
 ];

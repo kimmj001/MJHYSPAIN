@@ -353,20 +353,38 @@ window.TRIP_PHOTOS = {
   ],
   "shopping": [
     [
-      "Passeig de Gracia",
+      "Louis Vuitton on Passeig de Gracia",
       "assets/images/shopping/shopping-01.jpg"
     ],
     [
-      "Rambla de Catalunya",
+      "Chanel flagship window",
       "assets/images/shopping/shopping-02.jpg"
     ],
     [
-      "El Nacional Barcelona",
+      "Santa Eulalia designer floor",
       "assets/images/shopping/shopping-03.jpg"
     ],
     [
-      "Casa Mila on Passeig de Gracia",
+      "Santa Eulalia evening facade",
       "assets/images/shopping/shopping-04.jpg"
+    ]
+  ],
+  "universitat": [
+    [
+      "Placa Universitat",
+      "https://commons.wikimedia.org/wiki/Special:FilePath/PlacaUniversitat.jpg?width=900"
+    ],
+    [
+      "Ronda Universitat",
+      "https://commons.wikimedia.org/wiki/Special:FilePath/Ronda_Universitat_-_Barcelona_2016_-_01.jpg?width=900"
+    ],
+    [
+      "Universitat metro access",
+      "https://commons.wikimedia.org/wiki/Special:FilePath/Metro_L2_-_Placa_Estaci%C3%B3_Universitat.JPG?width=900"
+    ],
+    [
+      "University of Barcelona facade",
+      "https://commons.wikimedia.org/wiki/Special:FilePath/Universitat_de_Barcelona_P1350075.JPG?width=900"
     ]
   ],
   "batllo": [
@@ -497,7 +515,7 @@ window.TRIP_PHOTOS = {
     ["Simple mountain lunch", "https://commons.wikimedia.org/wiki/Special:FilePath/Bocadillo_de_jam%C3%B3n.jpg?width=900"]
   ],
   "mealRambla": [
-    ["Rambla de Catalunya", "assets/images/shopping/shopping-02.jpg"],
+    ["Barcelona dinner table", "assets/images/meals/meal-paella.jpg"],
     ["Tapas restaurant", "https://commons.wikimedia.org/wiki/Special:FilePath/Pa_amb_tom%C3%A0quet_-_Paco_Meralgo_tapas_restaurant_-_Barcelona,_Spain.jpg?width=900"]
   ],
   "mealGirona": [

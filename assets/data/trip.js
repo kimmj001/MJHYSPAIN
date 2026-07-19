@@ -103,9 +103,8 @@ window.TRIP_DATA = {
       stop("22:30", "숙소 복귀", "Urgell Barcelona", "lodging", "walking", guide("산악 데이를 차분히 닫는 마무리입니다.", "루프탑을 다녀왔든 건너뛰었든 사진 백업과 신발 정리만 하고, 다음 날 쇼핑과 밤 공연을 위해 잠을 충분히 확보합니다."))
     ]),
     day(7, "08.26", "Wed", "Shopping · Casa Batllo", "Couple highlight", "낮에는 쇼핑, 밤에는 Casa Batllo Magical Nights입니다. 시간을 충분히 비우고 옷을 갈아입는 여유를 둡니다.", [
-      stop("10:30", "Placa Universitat", "Placa Universitat Barcelona", "shopping", "walking", guide("쇼핑 동선으로 들어가기 전 기준점입니다.", "오늘은 많이 걸을 수 있으니 처음부터 속도를 올리지 말고, 사고 싶은 품목과 쉬는 지점을 간단히 정하고 시작합니다.")),
-      stop("11:30", "Rambla de Catalunya", "Rambla de Catalunya Barcelona", "shopping", "walking", guide("가로수와 카페가 좋아 쇼핑 사이 휴식이 쉬운 거리입니다.", "매장을 계속 이어가기보다 마음에 드는 카페를 하나 끼워 넣어 오후 피로를 줄이는 방식으로 움직입니다.")),
-      stop("12:00", "Passeig de Gracia", "Passeig de Gracia Barcelona", "shopping", "walking", guide("쇼핑과 모더니스타 건축이 겹치는 바르셀로나의 대표 거리입니다.", "Casa Mila와 주요 쇼윈도를 보며 걷되, 밤에 Casa Batllo 내부를 볼 예정이므로 낮에는 외관 중심으로 가볍게 봅니다.")),
+      stop("10:30", "Placa Universitat", "Placa Universitat Barcelona", "universitat", "walking", guide("쇼핑 동선으로 들어가기 전 기준점입니다.", "오늘은 많이 걸을 수 있으니 처음부터 속도를 올리지 말고, 사고 싶은 품목과 쉬는 지점을 간단히 정하고 시작합니다.")),
+      withSubtitle(stop("11:30", "Luxury Shopping", "Passeig de Gracia Barcelona", "shopping", "walking", guide("Passeig de Gracia는 바르셀로나의 대표적인 럭셔리 쇼핑 거리로, 모더니스타 건축과 플래그십 매장이 한 동선에 겹치는 구간입니다.", "Dior, Loewe, Louis Vuitton, Chanel, Rolex 같은 글로벌 부티크와 Santa Eulalia 같은 바르셀로나 클래식 스토어를 쇼윈도 중심으로 천천히 보는 흐름이 좋습니다.", "Miu Miu는 단독 매장보다 Santa Eulalia의 디자이너 셀렉션으로 보는 편이 자연스럽고, 실제 구매보다 분위기와 피팅 가능성을 확인하는 프리미엄 산책으로 잡습니다.")), "Luxury Boutiques & Flagship Stores"),
       meal("13:30", "점심 식사", "Ciutat Comtal", "Ciutat Comtal, Rambla de Catalunya, Barcelona", "walking", "Pintxos, Grilled Squid"),
       stop("15:30", "숙소 휴식", "Urgell Barcelona", "lodging", "walking", guide("Magical Nights 전에 옷을 갈아입고 쉬는 핵심 구간입니다.", "QR, 예약 시간, 배터리, 가벼운 겉옷을 확인하고 쇼핑한 물건은 숙소에 두어 밤 동선을 가볍게 만듭니다.")),
       stop("19:30", "Casa Batllo", "Casa Batllo Barcelona", "batllo", "walking", guide("Casa Batllo는 섬유 사업가 Josep Batllo의 집을 Gaudi가 1904~1906년에 완전히 새롭게 바꾼 Passeig de Gracia의 대표 모더니스타 건축입니다.", "뼈처럼 보이는 발코니, 물결치는 파사드, 용의 등처럼 읽히는 지붕 때문에 동화적인 외관으로 유명하지만 실제로는 빛과 환기, 생활 동선까지 세밀하게 설계된 집입니다.", "입장 전 Passeig de Gracia의 저녁빛에서 파사드를 먼저 보고, 입장 줄과 티켓 확인 위치를 파악해 공연 전 흐름을 안정시킵니다.")),
@@ -190,6 +189,13 @@ function meal(time, label, title, place, travelMode, mealNote) {
     mealLabel: label,
     mealNote,
     mealPoint: mealPointText(title, mealNote)
+  };
+}
+
+function withSubtitle(item, subtitle) {
+  return {
+    ...item,
+    subtitle
   };
 }
 
