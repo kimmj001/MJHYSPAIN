@@ -426,7 +426,7 @@ img { display: block; width: 100%; }
 }
 .leg {
   display: grid;
-  grid-template-columns: 82px 1fr auto;
+  grid-template-columns: 96px 1fr auto;
   gap: 10px;
   align-items: center;
   padding: 10px 12px;
@@ -435,9 +435,60 @@ img { display: block; width: 100%; }
   border: 1px solid rgba(8, 117, 111, .16);
   color: #1c4947;
 }
+.leg.cablecar-leg {
+  background: linear-gradient(135deg, #edf9fb, #f7fbf4);
+  border-color: rgba(0, 128, 128, .18);
+}
 .leg b {
   color: var(--sea);
   font-size: 13px;
+}
+.leg-mode {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+.leg-mode span {
+  white-space: nowrap;
+}
+.leg-mode.mode-cablecar {
+  color: #08717d;
+}
+.leg-icon {
+  position: relative;
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+}
+.cablecar-icon {
+  background: linear-gradient(180deg, rgba(255, 255, 255, .94), rgba(216, 244, 246, .86));
+  border: 1px solid rgba(0, 128, 128, .22);
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, .7), 0 6px 14px rgba(0, 128, 128, .1);
+}
+.cablecar-icon:before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  top: 6px;
+  height: 2px;
+  border-radius: 999px;
+  background: #08717d;
+  transform: rotate(-13deg);
+  transform-origin: center;
+}
+.cablecar-icon:after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 11px;
+  width: 12px;
+  height: 10px;
+  border-radius: 4px 4px 5px 5px;
+  background: linear-gradient(180deg, #19a7b2, #08717d);
+  box-shadow: inset 3px 0 0 rgba(255, 255, 255, .42), inset -3px 0 0 rgba(255, 255, 255, .25);
 }
 .leg .route {
   color: #557171;

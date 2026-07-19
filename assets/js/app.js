@@ -323,9 +323,10 @@ function escapeHtml(value) {
 
 function renderLeg(previous, current) {
   const mode = current.travelMode || "transit";
+  const modeClass = ` mode-${mode}`;
   return `
-    <div class="leg">
-      <b>${modeLabel(mode)}</b>
+    <div class="leg${mode === "cablecar" ? " cablecar-leg" : ""}">
+      <b class="leg-mode${modeClass}">${modeIllustration(mode)}<span>${modeLabel(mode)}</span></b>
       <div>
         <div class="route">${previous.title} → ${current.title}</div>
         <div class="route">${previous.place} → ${current.place}</div>
@@ -563,7 +564,12 @@ function modeLabel(mode) {
   if (mode === "walking") return "도보";
   if (mode === "taxi") return "택시";
   if (mode === "driving") return "차량";
+  if (mode === "cablecar") return "케이블카";
   return "대중교통";
+}
+
+function modeIllustration(mode) {
+  return mode === "cablecar" ? `<span class="leg-icon cablecar-icon" aria-hidden="true"></span>` : "";
 }
 
 function readStore(key, fallback) {
