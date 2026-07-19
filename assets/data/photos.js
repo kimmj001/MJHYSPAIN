@@ -319,16 +319,28 @@ window.TRIP_PHOTOS = {
   ],
   "montserrat": [
     [
+      "Aeri de Montserrat cable car",
+      "https://commons.wikimedia.org/wiki/Special:FilePath/Aeri_de_Montserrat_cable_car.JPG?width=900"
+    ],
+    [
+      "Aeri de Montserrat crossing the valley",
+      "https://commons.wikimedia.org/wiki/Special:FilePath/Yellow_cable_car_travelling_through_valley_%28Unsplash%29.jpg?width=900"
+    ],
+    [
+      "Aeri de Montserrat gondola",
+      "https://commons.wikimedia.org/wiki/Special:FilePath/Gondola_of_the_cable_car_up_Montserrat_mountain_01.jpg?width=900"
+    ],
+    [
+      "Aeri de Montserrat with mountain view",
+      "https://commons.wikimedia.org/wiki/Special:FilePath/Aeri_de_Montserrat_01.jpg?width=900"
+    ],
+    [
       "Montserrat mountain",
       "assets/images/montserrat/montserrat-01.jpg"
     ],
     [
       "Montserrat monastery",
       "assets/images/montserrat/montserrat-02.jpg"
-    ],
-    [
-      "Montserrat rack railway",
-      "assets/images/montserrat/montserrat-03.jpg"
     ],
     [
       "Sant Joan funicular view",

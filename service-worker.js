@@ -1,12 +1,12 @@
-const CACHE = "barcelona-2026-trip-photo-scroll-fix";
+const CACHE = "barcelona-2026-trip-montserrat-aeri";
 const LOCAL_ASSETS = [
   "./",
   "./index.html",
   "./manifest.webmanifest",
-  "./assets/css/app.css?trip=photo-scroll-fix",
-  "./assets/data/trip.js?trip=photo-scroll-fix",
-  "./assets/data/photos.js?trip=photo-scroll-fix",
-  "./assets/js/app.js?trip=photo-scroll-fix",
+  "./assets/css/app.css?trip=montserrat-aeri",
+  "./assets/data/trip.js?trip=montserrat-aeri",
+  "./assets/data/photos.js?trip=montserrat-aeri",
+  "./assets/js/app.js?trip=montserrat-aeri",
   "./icon-192.png",
   "./icon-512.png"
 ];
