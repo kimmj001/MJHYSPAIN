@@ -407,6 +407,19 @@ img { display: block; width: 100%; }
   line-height: 1.2;
 }
 .panel p { margin: 0; color: var(--muted); font-size: 14px; }
+.reservation-note {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 5px !important;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(232, 92, 104, .08), rgba(8, 117, 111, .08));
+  border: 1px solid rgba(216, 75, 61, .14);
+  color: #7a4b45 !important;
+  font-size: 11px !important;
+  font-weight: 850;
+  line-height: 1.25;
+}
 .metrics {
   display: grid;
   grid-template-columns: 1fr 1fr;

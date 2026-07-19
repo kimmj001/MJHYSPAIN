@@ -99,7 +99,7 @@ window.TRIP_DATA = {
       stop("17:20", "Placa d'Espanya 귀환", "Placa Espanya Barcelona", "montserrat", "transit", guide("FGC R5로 바르셀로나에 돌아오는 구간입니다.", "도착 후 바로 숙소 방향으로 이동하면 저녁 전 회복 시간이 충분히 남습니다.")),
       stop("18:30", "숙소 인근", "Urgell Barcelona", "lodging", "walking", guide("샤워와 휴식 후 숙소 근처에서 가볍게 저녁을 먹습니다.", "오늘은 산악 이동이 많았으므로 저녁 식사는 멀리 나가지 말고, 루프탑은 컨디션이 괜찮을 때만 짧게 다녀오는 흐름이 좋습니다.")),
       meal("19:00", "저녁 식사", "Carrer del Parlament 식당가", "Carrer del Parlament, Barcelona", "walking", "바르셀로나 복귀 후 숙소 근처에서 선택"),
-      stop("21:00", "La Isabela Rooftop (Optional)", "La Isabela Hotel 1898 Barcelona", "gothic", "walking", guide("La Isabela는 Hotel 1898의 루프탑 테라스로, La Rambla 중심에서 바르셀로나 지붕선과 저녁 야경을 보기 좋은 곳입니다.", "Montserrat는 이동과 계단 피로가 큰 날이라 이 일정은 필수가 아니라 컨디션이 남았을 때만 짧게 다녀오는 Optional로 둡니다.", "만석이거나 다리가 무겁거나 다음 날 컨디션이 걱정되면 루프탑을 건너뛰고 숙소에서 쉬는 쪽이 전체 여행 만족도에 더 좋습니다."), "https://www.hotel1898.com/en/terrace-la-isabela"),
+      stop("21:00", "La Isabela Rooftop (Optional)", "La Isabela Hotel 1898 Barcelona", "gothic", "walking", guide("La Isabela는 Hotel 1898의 루프탑 테라스로, La Rambla 중심에서 바르셀로나 지붕선과 저녁 야경을 보기 좋은 곳입니다.", "Montserrat는 이동과 계단 피로가 큰 날이라 이 일정은 필수가 아니라 컨디션이 남았을 때만 짧게 다녀오는 Optional로 둡니다.", "만석이거나 다리가 무겁거나 다음 날 컨디션이 걱정되면 루프탑을 건너뛰고 숙소에서 쉬는 쪽이 전체 여행 만족도에 더 좋습니다."), "https://www.hotel1898.com/en/terrace-la-isabela", "21:15 · M.J. Kim 이름으로 2인 예약 완료"),
       stop("22:30", "숙소 복귀", "Urgell Barcelona", "lodging", "walking", guide("산악 데이를 차분히 닫는 마무리입니다.", "루프탑을 다녀왔든 건너뛰었든 사진 백업과 신발 정리만 하고, 다음 날 쇼핑과 밤 공연을 위해 잠을 충분히 확보합니다."))
     ]),
     day(7, "08.26", "Wed", "Shopping · Casa Batllo", "Couple highlight", "낮에는 쇼핑, 밤에는 Casa Batllo Magical Nights입니다. 시간을 충분히 비우고 옷을 갈아입는 여유를 둡니다.", [
@@ -163,7 +163,7 @@ function day(id, date, weekday, title, mood, summary, stops) {
   };
 }
 
-function stop(time, title, place, imageKey, travelMode, guide, official = "") {
+function stop(time, title, place, imageKey, travelMode, guide, official = "", reservationNote = "") {
   return {
     type: "stop",
     time,
@@ -172,7 +172,8 @@ function stop(time, title, place, imageKey, travelMode, guide, official = "") {
     imageKey,
     travelMode,
     guide,
-    official
+    official,
+    reservationNote
   };
 }
 

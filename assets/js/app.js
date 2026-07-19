@@ -416,6 +416,7 @@ function renderStop(day, item, usedPhotos, sequence) {
           ${festivalBadge ? renderFestivalBadge(festivalBadge) : ""}
           <p>${item.place}</p>
           ${item.mealNote ? `<p class="meal-note">${item.mealNote}</p>` : ""}
+          ${item.reservationNote ? `<p class="reservation-note">${item.reservationNote}</p>` : ""}
         </div>
         <button class="icon-btn" data-action="favorite" data-id="${id}" aria-label="즐겨찾기" aria-pressed="${favorite}">${favorite ? "★" : "☆"}</button>
       </div>
