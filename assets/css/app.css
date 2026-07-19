@@ -452,6 +452,10 @@ img { display: block; width: 100%; }
   border-color: rgba(226, 85, 61, .55);
   box-shadow: 0 0 0 3px rgba(226, 85, 61, .13), var(--shadow);
 }
+.stop.map-target {
+  border-color: rgba(0, 128, 128, .5);
+  box-shadow: 0 0 0 3px rgba(0, 128, 128, .12), var(--shadow);
+}
 .stop-head {
   padding: 14px 14px 10px;
   display: grid;

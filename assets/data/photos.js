@@ -93,6 +93,28 @@ window.TRIP_PHOTOS = {
       "assets/images/santpau/santpau-04.jpg"
     ]
   ],
+  "bunkers": [
+    [
+      "Bunkers del Carmel city view",
+      "https://commons.wikimedia.org/wiki/Special:FilePath/Barcelona%2C_View_from_Bunkers_del_Carmel.jpg?width=900"
+    ],
+    [
+      "Bunkers del Carmel sunset",
+      "https://commons.wikimedia.org/wiki/Special:FilePath/Bunkers_del_Carmel_Barcelona.jpg?width=900"
+    ],
+    [
+      "People at Bunkers del Carmel viewpoint",
+      "https://commons.wikimedia.org/wiki/Special:FilePath/View_from_the_Bunkers_del_Carmel.jpg?width=900"
+    ],
+    [
+      "Anti-aircraft battery at Turo de la Rovira",
+      "https://commons.wikimedia.org/wiki/Special:FilePath/049_Tur%C3%B3_de_la_Rovira%2C_antiga_bateria_antia%C3%A8ria.jpg?width=900"
+    ],
+    [
+      "Sant Pau from Turo de la Rovira",
+      "https://commons.wikimedia.org/wiki/Special:FilePath/029_El_Guinard%C3%B3_i_l%27hospital_de_Sant_Pau_des_del_tur%C3%B3_de_la_Rovira.jpg?width=900"
+    ]
+  ],
   "parkguell": [
     [
       "Park Guell dragon El Drac",

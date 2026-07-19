@@ -218,12 +218,25 @@ function initDayMap(day, stops = day.stops) {
     `);
 
     marker.on("click", () => {
-      document.getElementById(stopId(day, point.stop))?.scrollIntoView({ behavior: "smooth", block: "start" });
+      scrollToStop(day, point.stop);
     });
   });
 
   dayMapInstance = map;
   setTimeout(() => map.invalidateSize(), 120);
+}
+
+function scrollToStop(day, stop) {
+  const target = document.getElementById(stopId(day, stop));
+  if (!target) return;
+
+  const stickyOffset = ($(".topbar")?.offsetHeight || 0) + 14;
+  const top = target.getBoundingClientRect().top + window.scrollY - stickyOffset;
+  window.scrollTo({ top, behavior: "smooth" });
+
+  document.querySelectorAll(".stop.map-target").forEach(item => item.classList.remove("map-target"));
+  target.classList.add("map-target");
+  window.setTimeout(() => target.classList.remove("map-target"), 1200);
 }
 
 function numberedMapIcon(number, highlight = false) {
@@ -322,11 +335,13 @@ function renderLeg(previous, current) {
 
 function renderStop(day, item, usedPhotos, sequence) {
   const id = stopId(day, item);
-  const images = (data.images[item.imageKey] || []).filter(([, src]) => {
+  const allImages = data.images[item.imageKey] || [];
+  let images = allImages.filter(([, src]) => {
     if (usedPhotos.has(src)) return false;
     usedPhotos.add(src);
     return true;
   });
+  if (!images.length && allImages.length) images = rotateImages(allImages, sequence).slice(0, 4);
   const favorite = state.favorites.includes(id);
   const festivalBadge = festivalBadgeFor(day, item);
   return `
@@ -364,6 +379,12 @@ function renderStop(day, item, usedPhotos, sequence) {
 
     </article>
   `;
+}
+
+function rotateImages(images, seed = 0) {
+  if (!images.length) return [];
+  const offset = (seed - 1) % images.length;
+  return images.slice(offset).concat(images.slice(0, offset));
 }
 
 function festivalBadgeFor(day, item) {
