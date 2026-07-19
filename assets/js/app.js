@@ -355,7 +355,7 @@ function routeCardOverride(day, previous, current, currentIndex) {
       src: "assets/images/route-cards/aeri-cablecar.png",
       alt: "Aeri de Montserrat cable car"
     },
-    "10-11": {
+    "9-10": {
       src: "assets/images/route-cards/aeri-cablecar.png",
       alt: "Aeri de Montserrat cable car descent"
     },
@@ -373,7 +373,7 @@ function routeCardOverride(day, previous, current, currentIndex) {
     `;
   }
 
-  if (key === "4-5" || key === "11-12") {
+  if (key === "4-5" || key === "10-11" || key === "11-12") {
     return `
       <div class="leg simple-leg walk-leg">
         <strong>도보 5분</strong>

@@ -1,12 +1,12 @@
-const CACHE = "barcelona-2026-trip-montserrat-route-cards";
+const CACHE = "barcelona-2026-trip-montserrat-route-cards-fix";
 const LOCAL_ASSETS = [
   "./",
   "./index.html",
   "./manifest.webmanifest",
-  "./assets/css/app.css?trip=montserrat-route-cards",
-  "./assets/data/trip.js?trip=montserrat-route-cards",
-  "./assets/data/photos.js?trip=montserrat-route-cards",
-  "./assets/js/app.js?trip=montserrat-route-cards",
+  "./assets/css/app.css?trip=montserrat-route-cards-fix",
+  "./assets/data/trip.js?trip=montserrat-route-cards-fix",
+  "./assets/data/photos.js?trip=montserrat-route-cards-fix",
+  "./assets/js/app.js?trip=montserrat-route-cards-fix",
   "./icon-192.png",
   "./icon-512.png"
 ];
