@@ -125,7 +125,7 @@ function renderDay(dayId) {
   $("#schedule").innerHTML = visibleStops.length
     ? visibleStops.map((stop, index) => {
         const previous = visibleStops[index - 1];
-        return `${previous ? renderLeg(previous, stop) : ""}${renderStop(day, stop, usedPhotos)}`;
+        return `${previous ? renderLeg(previous, stop) : ""}${renderStop(day, stop, usedPhotos, index + 1)}`;
       }).join("")
     : `<div class="stop empty">이 날짜에는 즐겨찾기한 일정이 없습니다.</div>`;
   $("#dayMap").innerHTML = renderDayMap(day, visibleStops);
@@ -318,7 +318,7 @@ function renderLeg(previous, current) {
   `;
 }
 
-function renderStop(day, item, usedPhotos) {
+function renderStop(day, item, usedPhotos, sequence) {
   const id = stopId(day, item);
   const images = (data.images[item.imageKey] || []).filter(([, src]) => {
     if (usedPhotos.has(src)) return false;
@@ -330,7 +330,10 @@ function renderStop(day, item, usedPhotos) {
   return `
     <article class="stop${item.mealLabel ? " meal-stop" : ""}" id="${id}" data-time="${item.time}">
       <div class="stop-head">
-        <time>${item.time}</time>
+        <div class="stop-meta">
+          <span class="stop-sequence">${String(sequence).padStart(2, "0")}</span>
+          <time>${item.time}</time>
+        </div>
         <div>
           ${item.mealLabel ? `<div class="meal-label">${item.mealLabel}</div>` : ""}
           <h3>${item.title}</h3>

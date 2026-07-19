@@ -459,6 +459,26 @@ img { display: block; width: 100%; }
   gap: 12px;
   align-items: start;
 }
+.stop-meta {
+  display: grid;
+  gap: 5px;
+  justify-items: start;
+}
+.stop-sequence {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 24px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(16, 41, 53, .92), rgba(31, 95, 103, .88));
+  color: #fff;
+  font-size: 12px;
+  font-weight: 950;
+  letter-spacing: 0;
+  box-shadow: 0 8px 18px rgba(16, 41, 53, .16);
+}
 .stop time {
   color: var(--coral);
   font-weight: 950;
