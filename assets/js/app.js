@@ -200,10 +200,12 @@ function renderStop(day, item, usedPhotos) {
         `).join("")}
       </div>` : ""}
 
-      ${!item.mealLabel ? `<div class="stop-toolbar">
+      ${item.mealLabel ? `<div class="stop-toolbar">
+        <button class="pill-btn primary" data-action="open-meal-point" data-day="${day.id}" data-stop="${id}">식사 포인트</button>
+      </div>` : `<div class="stop-toolbar">
         <button class="pill-btn primary" data-action="open-guide" data-day="${day.id}" data-stop="${id}">관람 가이드</button>
         ${item.official ? `<a class="pill-btn" href="${item.official}" target="_blank" rel="noreferrer">공식 링크</a>` : ""}
-      </div>` : ""}
+      </div>`}
 
     </article>
   `;
@@ -246,6 +248,10 @@ function bindActions() {
       openGuide(Number(action.dataset.day), action.dataset.stop);
     }
 
+    if (action.dataset.action === "open-meal-point") {
+      openMealPoint(Number(action.dataset.day), action.dataset.stop);
+    }
+
     if (action.dataset.action === "close-guide") {
       closeGuide();
     }
@@ -270,6 +276,17 @@ function openGuide(dayId, id) {
   $("#guideActions").innerHTML = stop.official
     ? `<a class="pill-btn" href="${stop.official}" target="_blank" rel="noreferrer">공식 링크</a>`
     : "";
+  $("#guideModal").hidden = false;
+}
+
+function openMealPoint(dayId, id) {
+  const day = data.days.find(item => item.id === dayId);
+  const stop = day?.stops.find(item => stopId(day, item) === id);
+  if (!stop) return;
+  $("#guideTime").textContent = `${day.date} ${day.weekday} · ${stop.time} · ${stop.mealLabel}`;
+  $("#guideTitle").textContent = stop.title;
+  $("#guideBody").textContent = stop.mealPoint || stop.mealNote || "";
+  $("#guideActions").innerHTML = "";
   $("#guideModal").hidden = false;
 }
 

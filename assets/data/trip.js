@@ -177,13 +177,50 @@ function meal(time, label, title, place, travelMode, mealNote) {
     time,
     title,
     place,
-    imageKey: "",
+    imageKey: mealImageKey(title),
     travelMode,
     guide: "",
     official: "",
     mealLabel: label,
-    mealNote
+    mealNote,
+    mealPoint: mealPointText(title, mealNote)
   };
+}
+
+function mealImageKey(title) {
+  if (title.includes("Can Sole")) return "mealPaella";
+  if (title.includes("La Paradeta")) return "mealSeafood";
+  if (title.includes("El Cable")) return "mealBomba";
+  if (title.includes("Granja")) return "mealChurros";
+  if (title.includes("Ciutat Comtal")) return "mealTapas";
+  if (title.includes("Mercat")) return "mealMarket";
+  if (title.includes("Verdi") || title.includes("Gracia")) return "mealGracia";
+  if (title.includes("Valladolid") || title.includes("Sants")) return "mealSants";
+  if (title.includes("Ribera")) return "mealSitges";
+  if (title.includes("Parlament")) return "mealParlament";
+  if (title.includes("Montserrat")) return "mealMontserrat";
+  if (title.includes("Rambla de Catalunya")) return "mealRambla";
+  if (title.includes("Llibertat")) return "mealGirona";
+  if (title.includes("Poblenou")) return "mealPoblenou";
+  if (title.includes("Port Olimpic")) return "mealPort";
+  if (title.includes("Isabel")) return "mealSeafood";
+  return "mealTapas";
+}
+
+function mealPointText(title, mealNote) {
+  if (title.includes("Can Sole")) return "Barceloneta에서 오래 사랑받는 해산물 식사 포인트입니다. 꼭 먹으면 좋은 건 Seafood Paella와 Fideua이고, 둘 다 바다 일정 뒤에 잘 맞는 스페인식 해산물 메인입니다.";
+  if (title.includes("La Paradeta")) return "해산물을 고르고 조리해 먹는 캐주얼 seafood 스타일입니다. Garlic Shrimp, Mussels, Squid처럼 재료 맛이 바로 느껴지는 메뉴가 좋고, Sagrada Familia 근처 점심으로 부담이 적습니다.";
+  if (title.includes("El Cable")) return "Sitges에서 Bomba로 유명한 타파스 바입니다. Bomba는 감자 크로켓에 소스가 올라가는 바르셀로나식 전통 타파스라 꼭 하나는 먹어보면 좋습니다.";
+  if (title.includes("Granja")) return "오래된 바르셀로나식 카페 문화인 granja 분위기를 느끼는 간식 Stop입니다. 진한 Hot Chocolate에 Churros를 찍어 먹는 조합이 핵심입니다.";
+  if (title.includes("Ciutat Comtal")) return "Passeig de Gracia 쇼핑 동선에서 들르기 좋은 인기 타파스 식당입니다. Pintxos와 Grilled Squid처럼 한두 접시씩 나눠 먹기 좋은 메뉴를 우선하면 좋습니다.";
+  if (title.includes("Mercat")) return "시장 안에서 가볍게 고르는 첫 식사입니다. Jamon, Bocadillo, Fresh Juice처럼 바로 먹기 쉬운 조합을 고르면 도착일 컨디션을 크게 쓰지 않습니다.";
+  if (title.includes("Montserrat")) return "산 위 식사는 선택지가 많지 않아 빠르고 든든한 메뉴가 우선입니다. 너무 오래 기다리기보다 간단한 샌드위치나 따뜻한 접시 하나로 Sant Joan 이동 전 에너지를 채웁니다.";
+  if (title.includes("Ribera")) return "Sitges 해변 저녁은 맛보다 자리와 퇴장 동선이 중요합니다. 바다를 볼 수 있고 La Fragata로 이동하기 쉬운 곳을 고르면 불꽃 대기 흐름이 편합니다.";
+  if (title.includes("Isabel")) return "마지막 저녁은 Port Vell과 El Born 사이에서 분위기를 잡는 식사입니다. 해산물, 쌀요리, 타파스 중 컨디션에 맞춰 고르고 Sants 이동 여부를 식사 중 결정하면 좋습니다.";
+  if (title.includes("Valladolid") || title.includes("Sants")) return "Sants 축제 주변 식당가는 오래 앉기보다 가볍게 먹는 것이 좋습니다. 붐비는 골목을 피해 회전이 빠른 타파스나 간단한 접시 위주로 고르세요.";
+  if (title.includes("Poblenou")) return "요트 일정 전 브런치라 과하게 무겁지 않게 먹는 것이 좋습니다. 빵, 계란, 커피처럼 속이 편한 메뉴를 고르면 바다 위에서도 부담이 적습니다.";
+  if (title.includes("Port Olimpic")) return "세일링 후 바로 회복하는 점심입니다. 물과 염분 보충이 우선이고, 해산물이나 샐러드처럼 가볍게 끝낼 수 있는 메뉴가 좋습니다.";
+  return `${mealNote}. 식당가 Stop은 별도 예약보다 현장 분위기와 대기 시간을 보고 고르는 것이 좋습니다. 사람이 과하게 몰리는 곳보다 밝고 이동하기 쉬운 곳을 우선하세요.`;
 }
 
 function guide(...lines) {

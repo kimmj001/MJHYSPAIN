@@ -414,6 +414,69 @@ window.TRIP_PHOTOS = {
       "Rodalies train Barcelona",
       "assets/images/airport/airport-04.jpg"
     ]
+  ],
+  "mealMarket": [
+    ["Market lunch counter", "https://commons.wikimedia.org/wiki/Special:FilePath/Boqueria_market_Barcelona_2010.jpg?width=900"],
+    ["Fresh juice at Barcelona market", "https://commons.wikimedia.org/wiki/Special:FilePath/La_Boqueria_Market,_Barcelona,_Spain_-_panoramio_(1).jpg?width=900"]
+  ],
+  "mealGracia": [
+    ["Barcelona restaurant street", "https://commons.wikimedia.org/wiki/Special:FilePath/Genov%C3%A8_1911,_Barcelona_SP.jpg?width=900"],
+    ["Spanish tapas bar", "https://commons.wikimedia.org/wiki/Special:FilePath/170_Bar_del_Pi,_pl._Sant_Josep_Oriol_1_(Barcelona).jpg?width=900"]
+  ],
+  "mealSeafood": [
+    ["Seafood paella", "assets/images/meals/meal-paella.jpg"],
+    ["Fideua", "assets/images/meals/meal-fideua.jpg"],
+    ["Seafood rice", "https://commons.wikimedia.org/wiki/Special:FilePath/Paella_de_Marisco_Valencia.jpg?width=900"]
+  ],
+  "mealPaella": [
+    ["Seafood paella", "assets/images/meals/meal-paella.jpg"],
+    ["Fideua", "assets/images/meals/meal-fideua.jpg"],
+    ["Fideua plate", "https://commons.wikimedia.org/wiki/Special:FilePath/Plato_de_fideu%C3%A1.jpg?width=900"]
+  ],
+  "mealBomba": [
+    ["Bomba tapa", "assets/images/meals/meal-bomba.jpg"],
+    ["Pintxos bar", "https://commons.wikimedia.org/wiki/Special:FilePath/Pintxos_in_Bilbao.jpg?width=900"]
+  ],
+  "mealChurros": [
+    ["Churros with chocolate", "assets/images/meals/meal-churros.jpg"],
+    ["Chocolate and churros", "assets/images/meals/meal-churros-cup.jpg"]
+  ],
+  "mealTapas": [
+    ["Pa amb tomaquet tapas", "https://commons.wikimedia.org/wiki/Special:FilePath/Pa_amb_tom%C3%A0quet_-_Paco_Meralgo_tapas_restaurant_-_Barcelona,_Spain.jpg?width=900"],
+    ["Bomba tapa", "assets/images/meals/meal-bomba.jpg"],
+    ["Barcelona tapas restaurant", "https://commons.wikimedia.org/wiki/Special:FilePath/Genov%C3%A8_1911,_Barcelona_SP.jpg?width=900"]
+  ],
+  "mealSants": [
+    ["Sants restaurant street", "assets/images/santsFestival/santsFestival-03.jpg"],
+    ["Festa Major de Sants area", "assets/images/santsFestival/santsFestival-04.jpg"]
+  ],
+  "mealSitges": [
+    ["Sitges seafront dining area", "assets/images/sitgesBeach/sitgesBeach-02.jpg"],
+    ["Sitges beach promenade", "assets/images/sitgesBeach/sitgesBeach-04.jpg"]
+  ],
+  "mealParlament": [
+    ["Sant Antoni food street", "assets/images/lodging/lodging-03.jpg"],
+    ["Barcelona tapas restaurant", "https://commons.wikimedia.org/wiki/Special:FilePath/Genov%C3%A8_1911,_Barcelona_SP.jpg?width=900"]
+  ],
+  "mealMontserrat": [
+    ["Montserrat monastery area", "assets/images/montserrat/montserrat-02.jpg"],
+    ["Simple mountain lunch", "https://commons.wikimedia.org/wiki/Special:FilePath/Bocadillo_de_jam%C3%B3n.jpg?width=900"]
+  ],
+  "mealRambla": [
+    ["Rambla de Catalunya", "assets/images/shopping/shopping-02.jpg"],
+    ["Tapas restaurant", "https://commons.wikimedia.org/wiki/Special:FilePath/Pa_amb_tom%C3%A0quet_-_Paco_Meralgo_tapas_restaurant_-_Barcelona,_Spain.jpg?width=900"]
+  ],
+  "mealGirona": [
+    ["Girona old town dining street", "assets/images/girona/girona-04.jpg"],
+    ["Rambla de la Llibertat area", "assets/images/girona/girona-01.jpg"]
+  ],
+  "mealPoblenou": [
+    ["Barcelona brunch table", "https://commons.wikimedia.org/wiki/Special:FilePath/Brunch_in_Barcelona.jpg?width=900"],
+    ["Cafe terrace", "https://commons.wikimedia.org/wiki/Special:FilePath/Barcelona_Restaurant_Cafe.jpg?width=900"]
+  ],
+  "mealPort": [
+    ["Port Olimpic waterfront", "assets/images/sailing/sailing-04.jpg"],
+    ["Seafood paella", "assets/images/meals/meal-paella.jpg"]
   ]
 };
 if (window.TRIP_DATA) window.TRIP_DATA.heroImage = "assets/images/hero/hero-01.jpg";
