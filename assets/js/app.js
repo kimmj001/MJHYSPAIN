@@ -179,12 +179,14 @@ function renderStop(day, item, usedPhotos) {
   });
   const favorite = state.favorites.includes(id);
   return `
-    <article class="stop" id="${id}" data-time="${item.time}">
+    <article class="stop${item.mealLabel ? " meal-stop" : ""}" id="${id}" data-time="${item.time}">
       <div class="stop-head">
         <time>${item.time}</time>
         <div>
+          ${item.mealLabel ? `<div class="meal-label">${item.mealLabel}</div>` : ""}
           <h3>${item.title}</h3>
           <p>${item.place}</p>
+          ${item.mealNote ? `<p class="meal-note">${item.mealNote}</p>` : ""}
         </div>
         <button class="icon-btn" data-action="favorite" data-id="${id}" aria-label="즐겨찾기" aria-pressed="${favorite}">${favorite ? "★" : "☆"}</button>
       </div>
@@ -198,10 +200,10 @@ function renderStop(day, item, usedPhotos) {
         `).join("")}
       </div>` : ""}
 
-      <div class="stop-toolbar">
+      ${!item.mealLabel ? `<div class="stop-toolbar">
         <button class="pill-btn primary" data-action="open-guide" data-day="${day.id}" data-stop="${id}">관람 가이드</button>
         ${item.official ? `<a class="pill-btn" href="${item.official}" target="_blank" rel="noreferrer">공식 링크</a>` : ""}
-      </div>
+      </div>` : ""}
 
     </article>
   `;
