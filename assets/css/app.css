@@ -250,36 +250,45 @@ img { display: block; width: 100%; }
 }
 .map-surface {
   position: relative;
-  height: clamp(190px, 30vw, 310px);
+  height: clamp(240px, 34vw, 360px);
   overflow: hidden;
   border: 1px solid rgba(23, 33, 43, .09);
   border-radius: 8px;
-  background:
-    linear-gradient(90deg, transparent 0 68%, rgba(111, 183, 210, .28) 68% 100%),
-    linear-gradient(115deg, transparent 0 45%, rgba(255,255,255,.85) 45% 47%, transparent 47% 100%),
-    linear-gradient(28deg, transparent 0 34%, rgba(255,255,255,.75) 34% 36%, transparent 36% 100%),
-    linear-gradient(155deg, transparent 0 58%, rgba(255,255,255,.72) 58% 60%, transparent 60% 100%),
-    repeating-linear-gradient(0deg, rgba(49, 71, 86, .055) 0 1px, transparent 1px 34px),
-    repeating-linear-gradient(90deg, rgba(49, 71, 86, .055) 0 1px, transparent 1px 42px),
-    #eef3f1;
+  background: #dfe8ea;
   box-shadow: var(--shadow);
 }
 .map-surface:before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 76% 55%, rgba(100, 176, 207, .34), transparent 28%),
-    radial-gradient(ellipse at 28% 28%, rgba(242, 184, 75, .10), transparent 24%),
-    rgba(255, 255, 255, .34);
-  pointer-events: none;
+  display: none;
 }
 .map-surface:after {
-  content: "";
+  display: none;
+}
+.leaflet-day-map {
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, .36);
-  pointer-events: none;
+  z-index: 1;
+  min-height: 100%;
+  background: #dfe8ea;
+}
+.leaflet-day-map .leaflet-control-zoom a {
+  color: var(--ink);
+  font-weight: 950;
+}
+.leaflet-day-map .leaflet-popup-content {
+  margin: 10px 12px;
+  color: var(--ink);
+  font-size: 12px;
+  line-height: 1.35;
+}
+.leaflet-day-map .leaflet-popup-content strong {
+  font-size: 13px;
+}
+.map-fallback {
+  height: 100%;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  font-weight: 850;
 }
 .map-route {
   position: absolute;
@@ -329,7 +338,7 @@ img { display: block; width: 100%; }
 }
 .map-caption {
   position: absolute;
-  z-index: 3;
+  z-index: 500;
   left: 12px;
   bottom: 12px;
   display: inline-flex;
@@ -343,9 +352,41 @@ img { display: block; width: 100%; }
   color: var(--muted);
   font-size: 12px;
   font-weight: 850;
+  pointer-events: none;
 }
 .map-caption b {
   color: var(--ink);
+}
+.leaflet-numbered-pin {
+  width: 32px !important;
+  height: 32px !important;
+  margin-left: -16px !important;
+  margin-top: -16px !important;
+  border: 2px solid rgba(255,255,255,.96);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #7152d9, #5b43bd);
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(46, 33, 91, .24);
+  font-size: 14px;
+  font-weight: 950;
+}
+.leaflet-numbered-pin.tone-2 {
+  background: linear-gradient(135deg, #e85c68, #d74954);
+}
+.leaflet-numbered-pin.tone-3 {
+  background: linear-gradient(135deg, #20b6aa, #13978e);
+}
+.leaflet-numbered-pin.tone-0 {
+  background: linear-gradient(135deg, #f2b84b, #d9902e);
+}
+.leaflet-numbered-pin.highlight {
+  background: linear-gradient(135deg, #f05262, #d83d4d);
+  box-shadow: 0 0 0 5px rgba(240, 82, 98, .14), 0 10px 22px rgba(216, 61, 77, .26);
+}
+.leaflet-numbered-pin span {
+  transform: translateY(-1px);
 }
 .day-layout {
   display: grid;

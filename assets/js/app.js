@@ -8,6 +8,7 @@ const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 const data = window.TRIP_DATA;
 if (window.TRIP_PHOTOS) data.images = window.TRIP_PHOTOS;
+let dayMapInstance = null;
 
 document.addEventListener("DOMContentLoaded", () => {
   renderShell();
@@ -127,65 +128,112 @@ function renderDay(dayId) {
         return `${previous ? renderLeg(previous, stop) : ""}${renderStop(day, stop, usedPhotos)}`;
       }).join("")
     : `<div class="stop empty">이 날짜에는 즐겨찾기한 일정이 없습니다.</div>`;
-  $("#dayMap").innerHTML = renderDayMap(day);
+  $("#dayMap").innerHTML = renderDayMap(day, visibleStops);
+  requestAnimationFrame(() => initDayMap(day, visibleStops));
 
   observeLazyImages();
   markCurrentStop();
 }
 
-function renderDayMap(day) {
-  const points = mapPointsFor(day);
+function renderDayMap(day, stops = day.stops) {
+  const points = stops.filter(stop => coordsForStop(stop));
   if (!points.length) return "";
-  const routePoints = points.map(point => `${point.x.toFixed(1)},${point.y.toFixed(1)}`).join(" ");
   return `
-    <div class="map-surface">
-      <svg class="map-route" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-        <polyline points="${routePoints}" />
-      </svg>
-      ${points.map(point => `
-        <a class="map-pin${point.highlight ? " highlight" : ""}" href="#${point.id}" style="left:${point.x}%;top:${point.y}%;" aria-label="${point.number}. ${point.title}">
-          <span>${point.number}</span>
-        </a>
-      `).join("")}
+    <div class="map-surface real-map">
+      <div class="leaflet-day-map" id="leafletDayMap"></div>
       <div class="map-caption">
         <b>${day.date}</b>
-        <span>${points.length} stops</span>
+        <span>${points.length} stops · 확대 가능</span>
       </div>
     </div>
   `;
 }
 
-function mapPointsFor(day) {
-  const rawPoints = day.stops
+function initDayMap(day, stops = day.stops) {
+  const container = $("#leafletDayMap");
+  if (!container) return;
+
+  if (dayMapInstance) {
+    dayMapInstance.remove();
+    dayMapInstance = null;
+  }
+
+  const points = stops
     .map((stop, index) => ({ stop, index, coords: coordsForStop(stop) }))
-    .filter(item => item.coords);
-  if (!rawPoints.length) return [];
+    .filter(point => point.coords);
 
-  const lats = rawPoints.map(item => item.coords.lat);
-  const lngs = rawPoints.map(item => item.coords.lng);
-  const minLat = Math.min(...lats);
-  const maxLat = Math.max(...lats);
-  const minLng = Math.min(...lngs);
-  const maxLng = Math.max(...lngs);
-  const latRange = Math.max(maxLat - minLat, 0.006);
-  const lngRange = Math.max(maxLng - minLng, 0.006);
+  if (!window.L || !points.length) {
+    container.innerHTML = `<div class="map-fallback">지도를 불러오는 중입니다.</div>`;
+    return;
+  }
+
   const duplicateCounts = new Map();
-
-  return rawPoints.map(({ stop, index, coords }) => {
-    const key = `${coords.lat.toFixed(4)},${coords.lng.toFixed(4)}`;
+  const resolvedPoints = points.map(point => {
+    const key = `${point.coords.lat.toFixed(5)},${point.coords.lng.toFixed(5)}`;
     const duplicateIndex = duplicateCounts.get(key) || 0;
     duplicateCounts.set(key, duplicateIndex + 1);
-    const offset = duplicateIndex ? Math.min(4, duplicateIndex * 2.2) : 0;
-    const x = clamp(10 + ((coords.lng - minLng) / lngRange) * 80 + offset, 7, 93);
-    const y = clamp(90 - ((coords.lat - minLat) / latRange) * 80 - offset, 7, 93);
+    const offset = duplicateIndex ? duplicateIndex * 0.00018 : 0;
     return {
-      id: stopId(day, stop),
-      number: index + 1,
-      title: stop.title,
-      x,
-      y,
-      highlight: stop.imageKey === "sitgesFireworks" || stop.title.includes("Fireworks")
+      ...point,
+      latLng: [point.coords.lat + offset, point.coords.lng + offset]
     };
+  });
+
+  const map = L.map(container, {
+    zoomControl: true,
+    scrollWheelZoom: true,
+    doubleClickZoom: true,
+    touchZoom: true,
+    dragging: true
+  });
+
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 19,
+    attribution: "&copy; OpenStreetMap contributors"
+  }).addTo(map);
+
+  const latLngs = resolvedPoints.map(point => point.latLng);
+  if (latLngs.length > 1) {
+    L.polyline(latLngs, {
+      color: "#17212b",
+      weight: 3,
+      opacity: 0.55,
+      dashArray: "6 8"
+    }).addTo(map);
+    map.fitBounds(latLngs, { padding: [30, 30], maxZoom: 14 });
+  } else {
+    map.setView(latLngs[0], 15);
+  }
+
+  resolvedPoints.forEach(point => {
+    const number = point.index + 1;
+    const marker = L.marker(point.latLng, {
+      icon: numberedMapIcon(number, point.stop.imageKey === "sitgesFireworks" || point.stop.title.includes("Fireworks")),
+      title: `${number}. ${point.stop.title}`
+    }).addTo(map);
+
+    marker.bindPopup(`
+      <strong>${number}. ${escapeHtml(point.stop.title)}</strong><br>
+      <span>${escapeHtml(point.stop.time)} · ${escapeHtml(point.stop.place)}</span>
+    `);
+
+    marker.on("click", () => {
+      document.getElementById(stopId(day, point.stop))?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+
+  dayMapInstance = map;
+  setTimeout(() => map.invalidateSize(), 120);
+}
+
+function numberedMapIcon(number, highlight = false) {
+  const tone = ` tone-${number % 4}`;
+  return L.divIcon({
+    className: `leaflet-numbered-pin${tone}${highlight ? " highlight" : ""}`,
+    html: `<span>${number}</span>`,
+    iconSize: [32, 32],
+    iconAnchor: [16, 16],
+    popupAnchor: [0, -18]
   });
 }
 
@@ -194,15 +242,19 @@ function coordsForStop(stop) {
   const rules = [
     [/Airport|El Prat/, 41.2974, 2.0833],
     [/Urgell|숙소/, 41.3836, 2.1587],
-    [/Sant Antoni Brunch|Mercat de Sant Antoni|Parlament/, 41.3790, 2.1615],
+    [/Mercat de Sant Antoni/, 41.3786, 2.1621],
+    [/Sant Antoni Brunch|Parlament/, 41.3790, 2.1615],
     [/Vila de Gracia|Verdi/, 41.4038, 2.1575],
     [/Park Guell/, 41.4145, 2.1527],
-    [/La Paradeta|Sagrada Familia/, 41.4036, 2.1744],
+    [/La Paradeta/, 41.4033, 2.1750],
+    [/Sagrada Familia/, 41.4036, 2.1744],
     [/Avinguda de Gaudi/, 41.4074, 2.1741],
     [/Sant Pau|Recinte Modernista/, 41.4135, 2.1746],
     [/Bunkers|Turo de la Rovira/, 41.4196, 2.1619],
     [/Travessera de Gracia/, 41.4020, 2.1540],
-    [/Dr\. Stravinsky|Paradiso|Collage|El Born|Passeig del Born|Santa Maria del Mar/, 41.3847, 2.1817],
+    [/Dr\. Stravinsky|Paradiso|Collage/, 41.3847, 2.1817],
+    [/Santa Maria del Mar/, 41.3839, 2.1820],
+    [/El Born|Passeig del Born/, 41.3852, 2.1816],
     [/Barceloneta Beach/, 41.3780, 2.1920],
     [/Barceloneta|Can Sole/, 41.3795, 2.1890],
     [/Port Vell|7 Portes|Isabel II/, 41.3763, 2.1823],
@@ -219,23 +271,37 @@ function coordsForStop(stop) {
     [/Passeig de Vilafranca/, 41.2401, 1.8080],
     [/Placa Catalunya/, 41.3868, 2.1700],
     [/Granja M\. Viader/, 41.3833, 2.1702],
-    [/Barcelona Cathedral|Placa del Rei|Gothic Quarter/, 41.3840, 2.1769],
+    [/Barcelona Cathedral/, 41.3839, 2.1764],
+    [/Placa del Rei/, 41.3835, 2.1775],
+    [/Gothic Quarter/, 41.3838, 2.1769],
     [/Placa Universitat/, 41.3867, 2.1647],
     [/Rambla de Catalunya|Ciutat Comtal/, 41.3898, 2.1660],
     [/Passeig de Gracia|Casa Batllo|Casa Mila/, 41.3917, 2.1649],
-    [/Montserrat|Monistrol|Cremallera|Sant Joan Funicular/, 41.5933, 1.8372],
+    [/Monistrol|Cremallera/, 41.6106, 1.8421],
+    [/Sant Joan Funicular/, 41.5917, 1.8346],
+    [/Montserrat|Restaurant Montserrat/, 41.5933, 1.8372],
     [/Placa Espanya|Plaça d'Espanya/, 41.3751, 2.1494],
     [/Girona Station/, 41.9794, 2.8168],
-    [/Pont de les Peixateries|Onyar/, 41.9843, 2.8246],
-    [/Girona Old Town|Girona Cathedral|Passeig de la Muralla|Rambla de la Llibertat/, 41.9861, 2.8258],
+    [/Pont de les Peixateries/, 41.9843, 2.8246],
+    [/Girona Cathedral/, 41.9871, 2.8269],
+    [/Passeig de la Muralla/, 41.9860, 2.8293],
+    [/Rambla de la Llibertat/, 41.9837, 2.8243],
+    [/Onyar/, 41.9843, 2.8246],
+    [/Girona Old Town/, 41.9858, 2.8260],
     [/Boadas|Tallers/, 41.3851, 2.1710]
   ];
   const match = rules.find(([pattern]) => pattern.test(text));
   return match ? { lat: match[1], lng: match[2] } : null;
 }
 
-function clamp(value, min, max) {
-  return Math.min(max, Math.max(min, value));
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, char => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  }[char]));
 }
 
 function renderLeg(previous, current) {
